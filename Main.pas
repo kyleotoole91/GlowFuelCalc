@@ -30,6 +30,8 @@ type
     fMethanolVolume: double;
     fTotalDensity: double;
     fNitroContentByVolume: double;
+    fOilContentByVolume: double;
+    fMethanolContentByVolume: double;
     function CalcWeight(const APercentage: double): double;
     function GramsPerMl(const ADensityPerLitre: double): double;
   public
@@ -55,6 +57,8 @@ type
     property NitroVolume: double read fNitroVolume;
     property MethanolVolume: double read fMethanolVolume;
     property NitroContentByVolume: double read fNitroContentByVolume;
+    property OilContentByVolume: double read fOilContentByVolume;
+    property MethanolContentByVolume: double read fMethanolContentByVolume;
   end;
 
   TfrmMain = class(TForm)
@@ -117,6 +121,12 @@ type
     Panel16: TPanel;
     Label21: TLabel;
     seNitroContentByVolume: TSpinBox;
+    Panel17: TPanel;
+    Label22: TLabel;
+    seMethanolContentByVolume: TSpinBox;
+    Panel18: TPanel;
+    Label23: TLabel;
+    seOilContentByVolume: TSpinBox;
     procedure FormToVars(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -146,22 +156,19 @@ var
 begin
   synthPct := (fOilTarget / 100) * (100 - fCastorPct);
   castorPct := fOilTarget - synthPct;
-
   fCastorMeasurement := CalcWeight(castorPct);
   fSynthMeasurement := CalcWeight(synthPct);
   fNitroMeasurement := CalcWeight(fNitroTarget);
   fMethanolMeasurement := fTargetWeight - (fCastorMeasurement + fSynthMeasurement + fNitroMeasurement);
-
   fCastorVolume := fCastorMeasurement / GramsPerMl(fCastorDensity);
   fSynthVolume := fSynthMeasurement / GramsPerMl(fSynthDensity);
   fNitroVolume := fNitroMeasurement / GramsPerMl(fNitroDensity);
   fMethanolVolume := fMethanolMeasurement / GramsPerMl(fMethanolDensity);
-
   fTotalVolume := fCastorVolume + fSynthVolume + fNitroVolume + fMethanolVolume;
-
   fTotalDensity := (fTargetWeight / fTotalVolume) * 1000;
-
   fNitroContentByVolume := (fNitroVolume / fTotalVolume) * 100;
+  fOilContentByVolume := ((fSynthVolume + fCastorVolume) / fTotalVolume) * 100;
+  fMethanolContentByVolume := (fMethanolVolume / fTotalVolume) * 100;
 end;
 
 function TFuelCalc.CalcWeight(const APercentage: double): double;
@@ -187,7 +194,7 @@ begin
   result := ADensityPerLitre / 1000;
 end;
 
-{Form}
+{TfrmMain}
 
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
@@ -219,26 +226,24 @@ begin
   seMethanolDensity.Value := fFuelCalc.MethanolDensity;
   seCastorDensity.Value := fFuelCalc.CastorDensity;
   seSynthDensity.Value := fFuelCalc.SynthDensity;
-
   seNitroTarget.Value := fFuelCalc.NitroTarget;
   seOilTarget.Value := fFuelCalc.OilTarget;
   seCastorPercent.Value := fFuelCalc.CastorPct;
   seTargetWeight.Value := fFuelCalc.TargetWeight;
   seMethanolTarget.Value := 100 - (fFuelCalc.NitroTarget + fFuelCalc.OilTarget);
-
   seNitroMeasurement.Value := fFuelCalc.NitroMeasurement;
   seCastorMeasurement.Value := fFuelCalc.CastorMeasurement;
   seSynthMeasurement.Value := fFuelCalc.SynthMeasurement;
   seMethanolMeasurement.Value := fFuelCalc.MethanolMeasurement;
-
   seNitroMeasurementMls.Value := fFuelCalc.NitroVolume;
   seCastorMeasurementMls.Value := fFuelCalc.CastorVolume;
   seSynthMeasurementMls.Value := fFuelCalc.SynthVolume;
   seMethanolMeasurementMls.Value := fFuelCalc.MethanolVolume;
-
   seTotalVolume.Value := fFuelCalc.TotalVolume;
   seTotalDensity.Value := fFuelCalc.TotalDensity;
   seNitroContentByVolume.Value := fFuelCalc.NitroContentByVolume;
+  seOilContentByVolume.Value := fFuelCalc.OilContentByVolume;
+  seMethanolContentByVolume.Value := fFuelCalc.MethanolContentByVolume;
 end;
 
 procedure TfrmMain.FormToVars;
@@ -248,14 +253,11 @@ begin
     fFuelCalc.MethanolDensity := seMethanolDensity.Value;
     fFuelCalc.CastorDensity := seCastorDensity.Value;
     fFuelCalc.SynthDensity := seSynthDensity.Value;
-
     fFuelCalc.NitroTarget := seNitroTarget.Value;
     fFuelCalc.OilTarget := seOilTarget.Value;
     fFuelCalc.CastorPct := seCastorPercent.Value;
     fFuelCalc.TargetWeight := seTargetWeight.Value;
-
     fFuelCalc.Calc;
-
     VarsToForm;
   end;
 end;
