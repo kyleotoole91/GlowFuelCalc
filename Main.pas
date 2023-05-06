@@ -184,7 +184,7 @@ begin
   fCastorDensity := 962;
   fSynthDensity := 994;
   fNitroTarget := 16;
-  fOilTarget := 16;
+  fOilTarget := 14.93;
   fCastorPct := 30;
   fTargetWeight := 4304.75;
 end;
