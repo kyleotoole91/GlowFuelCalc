@@ -59,7 +59,7 @@ type
     property MethanolVolume: double read fMethanolVolume;
   end;
 
-  TForm1 = class(TForm)
+  TfrmMain = class(TForm)
     Label1: TLabel;
     V: TPanel;
     Label2: TLabel;
@@ -129,7 +129,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  frmMain: TfrmMain;
 
 implementation
 
@@ -186,7 +186,7 @@ end;
 
 {Form}
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   inherited;
   fLoading := true;
@@ -194,13 +194,13 @@ begin
   fFuelCalc.Calc;
 end;
 
-procedure TForm1.FormDestroy(Sender: TObject);
+procedure TfrmMain.FormDestroy(Sender: TObject);
 begin
   fFuelCalc.DisposeOf;
   inherited;
 end;
 
-procedure TForm1.FormShow(Sender: TObject);
+procedure TfrmMain.FormShow(Sender: TObject);
 begin
   fLoading := true;
   try
@@ -210,7 +210,7 @@ begin
   end;
 end;
 
-procedure TForm1.VarsToForm;
+procedure TfrmMain.VarsToForm;
 begin
   seNitroDensity.Value := fFuelCalc.NitroDensity;
   seMethanolDensity.Value := fFuelCalc.MethanolDensity;
@@ -237,7 +237,7 @@ begin
   seTotalDensity.Value := fFuelCalc.TotalDensity;
 end;
 
-procedure TForm1.FormToVars;
+procedure TfrmMain.FormToVars;
 begin
   if not fLoading then begin
     fFuelCalc.NitroDensity := seNitroDensity.Value;
