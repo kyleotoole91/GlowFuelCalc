@@ -24,13 +24,14 @@ object frmMain: TfrmMain
     TabOrder = 0
   end
   object V: TPanel
-    Align = Client
+    Align = Top
     Padding.Left = 6.000000000000000000
     Padding.Top = 6.000000000000000000
     Padding.Right = 6.000000000000000000
     Padding.Bottom = 6.000000000000000000
+    Position.Y = 40.000000000000000000
     Size.Width = 426.000000000000000000
-    Size.Height = 690.000000000000000000
+    Size.Height = 641.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
     object Label2: TLabel
@@ -54,7 +55,7 @@ object frmMain: TfrmMain
       Size.Width = 414.000000000000000000
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 18
+      TabOrder = 19
       object Label3: TLabel
         Align = Left
         StyledSettings = [Family, Style, FontColor]
@@ -69,10 +70,13 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 1
+        TabStop = False
         Cursor = crIBeam
-        Max = 10000.000000000000000000
-        Position.X = 284.000000000000000000
-        Size.Width = 130.000000000000000000
+        Max = 100000.000000000000000000
+        ValueType = Float
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 274.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
         OnChange = FormToVars
@@ -100,10 +104,13 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 2
+        TabStop = False
         Cursor = crIBeam
-        Max = 10000.000000000000000000
-        Position.X = 284.000000000000000000
-        Size.Width = 130.000000000000000000
+        Max = 100000.000000000000000000
+        ValueType = Float
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 274.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
         OnChange = FormToVars
@@ -131,10 +138,13 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 2
+        TabStop = False
         Cursor = crIBeam
-        Max = 10000.000000000000000000
-        Position.X = 284.000000000000000000
-        Size.Width = 130.000000000000000000
+        Max = 100000.000000000000000000
+        ValueType = Float
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 274.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
         OnChange = FormToVars
@@ -162,10 +172,13 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 2
+        TabStop = False
         Cursor = crIBeam
-        Max = 10000.000000000000000000
-        Position.X = 284.000000000000000000
-        Size.Width = 130.000000000000000000
+        Max = 100000.000000000000000000
+        ValueType = Float
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 274.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
         OnChange = FormToVars
@@ -192,7 +205,7 @@ object frmMain: TfrmMain
       Size.Width = 414.000000000000000000
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 16
+      TabOrder = 17
       object Label8: TLabel
         Align = Left
         StyledSettings = [Family, Style, FontColor]
@@ -207,9 +220,12 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 1
+        TabStop = False
         Cursor = crIBeam
-        Position.X = 284.000000000000000000
-        Size.Width = 130.000000000000000000
+        ValueType = Float
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 274.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
         OnChange = FormToVars
@@ -237,9 +253,12 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 1
+        TabStop = False
         Cursor = crIBeam
-        Position.X = 284.000000000000000000
-        Size.Width = 130.000000000000000000
+        ValueType = Float
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 274.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
         OnChange = FormToVars
@@ -267,9 +286,12 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 1
+        TabStop = False
         Cursor = crIBeam
-        Position.X = 284.000000000000000000
-        Size.Width = 130.000000000000000000
+        ValueType = Float
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 274.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
         OnChange = FormToVars
@@ -282,7 +304,7 @@ object frmMain: TfrmMain
       Size.Width = 414.000000000000000000
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 15
+      TabOrder = 16
       object Label11: TLabel
         Align = Left
         StyledSettings = [Family, Style, FontColor]
@@ -297,10 +319,13 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 1
+        TabStop = False
         Cursor = crIBeam
         Max = 100000.000000000000000000
-        Position.X = 284.000000000000000000
-        Size.Width = 130.000000000000000000
+        ValueType = Float
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 274.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
         OnChange = FormToVars
@@ -327,7 +352,7 @@ object frmMain: TfrmMain
       Size.Width = 414.000000000000000000
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 17
+      TabOrder = 18
       object Label13: TLabel
         Align = Left
         StyledSettings = [Family, Style, FontColor]
@@ -342,12 +367,15 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 2
+        TabStop = False
         Cursor = crIBeam
-        Max = 10000.000000000000000000
+        Max = 100000.000000000000000000
+        ValueType = Float
         ReadOnly = True
-        Position.X = 284.000000000000000000
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 274.000000000000000000
         Enabled = False
-        Size.Width = 130.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
       end
@@ -355,12 +383,15 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 1
+        TabStop = False
         Cursor = crIBeam
-        Max = 10000.000000000000000000
+        Max = 100000.000000000000000000
+        ValueType = Float
         ReadOnly = True
-        Position.X = 154.000000000000000000
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 134.000000000000000000
         Enabled = False
-        Size.Width = 130.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
       end
@@ -387,12 +418,15 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 3
+        TabStop = False
         Cursor = crIBeam
-        Max = 10000.000000000000000000
+        Max = 100000.000000000000000000
+        ValueType = Float
         ReadOnly = True
-        Position.X = 284.000000000000000000
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 274.000000000000000000
         Enabled = False
-        Size.Width = 130.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
       end
@@ -400,12 +434,15 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 2
+        TabStop = False
         Cursor = crIBeam
-        Max = 10000.000000000000000000
+        Max = 100000.000000000000000000
+        ValueType = Float
         ReadOnly = True
-        Position.X = 154.000000000000000000
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 134.000000000000000000
         Enabled = False
-        Size.Width = 130.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
       end
@@ -432,12 +469,15 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 3
+        TabStop = False
         Cursor = crIBeam
-        Max = 10000.000000000000000000
+        Max = 100000.000000000000000000
+        ValueType = Float
         ReadOnly = True
-        Position.X = 284.000000000000000000
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 274.000000000000000000
         Enabled = False
-        Size.Width = 130.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
       end
@@ -445,12 +485,15 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 2
+        TabStop = False
         Cursor = crIBeam
-        Max = 10000.000000000000000000
+        Max = 100000.000000000000000000
+        ValueType = Float
         ReadOnly = True
-        Position.X = 154.000000000000000000
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 134.000000000000000000
         Enabled = False
-        Size.Width = 130.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
       end
@@ -477,12 +520,15 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 3
+        TabStop = False
         Cursor = crIBeam
-        Max = 10000.000000000000000000
+        Max = 100000.000000000000000000
+        ValueType = Float
         ReadOnly = True
-        Position.X = 284.000000000000000000
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 274.000000000000000000
         Enabled = False
-        Size.Width = 130.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
       end
@@ -490,12 +536,15 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 2
+        TabStop = False
         Cursor = crIBeam
-        Max = 10000.000000000000000000
+        Max = 100000.000000000000000000
+        ValueType = Float
         ReadOnly = True
-        Position.X = 154.000000000000000000
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 134.000000000000000000
         Enabled = False
-        Size.Width = 130.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
       end
@@ -507,7 +556,7 @@ object frmMain: TfrmMain
       Size.Width = 414.000000000000000000
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 14
+      TabOrder = 15
       object Label14: TLabel
         Align = Left
         StyledSettings = [Family, Style, FontColor]
@@ -522,12 +571,15 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 1
+        TabStop = False
         Cursor = crIBeam
         Max = 100000.000000000000000000
+        ValueType = Float
         ReadOnly = True
-        Position.X = 284.000000000000000000
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 274.000000000000000000
         Enabled = False
-        Size.Width = 130.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
       end
@@ -568,10 +620,14 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 1
+        TabStop = False
         Cursor = crIBeam
-        Position.X = 284.000000000000000000
+        Max = 100000.000000000000000000
+        ValueType = Float
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 274.000000000000000000
         Enabled = False
-        Size.Width = 130.000000000000000000
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
         OnChange = FormToVars
@@ -584,7 +640,7 @@ object frmMain: TfrmMain
       Size.Width = 414.000000000000000000
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 13
+      TabOrder = 14
       object Label19: TLabel
         Align = Left
         StyledSettings = [Family, Style, FontColor]
@@ -599,12 +655,50 @@ object frmMain: TfrmMain
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Right
         TabOrder = 1
+        TabStop = False
         Cursor = crIBeam
         Max = 100000.000000000000000000
+        ValueType = Float
         ReadOnly = True
-        Position.X = 284.000000000000000000
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 274.000000000000000000
         Enabled = False
-        Size.Width = 130.000000000000000000
+        Size.Width = 140.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object Panel16: TPanel
+      Align = Top
+      Position.X = 6.000000000000000000
+      Position.Y = 593.000000000000000000
+      Size.Width = 414.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 13
+      object Label21: TLabel
+        Align = Left
+        StyledSettings = [Family, Style, FontColor]
+        Size.Width = 200.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 14.000000000000000000
+        Text = 'Nitromethane % (by Volume)'
+        TabOrder = 0
+      end
+      object seNitroContentByVolume: TSpinBox
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Right
+        TabOrder = 1
+        TabStop = False
+        Cursor = crIBeam
+        Max = 100000.000000000000000000
+        ValueType = Float
+        ReadOnly = True
+        KeyboardType = NumbersAndPunctuation
+        Position.X = 274.000000000000000000
+        Enabled = False
+        Size.Width = 140.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
       end
