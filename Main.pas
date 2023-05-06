@@ -11,12 +11,10 @@ type
   TFuelCalc = class (TObject)
   strict private
     fTotalWeight: double;
-    //density
     fNitroDensity: double;
     fMethanolDensity: double;
     fCastorDensity: double;
     fSynthDensity: double;
-    //targets
     fNitroTarget: double;
     fOilTarget: double;
     fCastorPct: double;
@@ -31,17 +29,16 @@ type
     fNitroVolume: double;
     fMethanolVolume: double;
     fTotalDensity: double;
+    fNitroContentByVolume: double;
     function CalcWeight(const APercentage: double): double;
     function GramsPerMl(const ADensityPerLitre: double): double;
   public
     constructor Create;
     procedure Calc;
-    //density
     property NitroDensity: double read fNitroDensity write fNitroDensity;
     property MethanolDensity: double read fMethanolDensity write fMethanolDensity;
     property CastorDensity: double read fCastorDensity write fCastorDensity;
     property SynthDensity: double read fSynthDensity write fSynthDensity;
-    //targets
     property NitroTarget: double read fNitroTarget write fNitroTarget;
     property OilTarget: double read fOilTarget write fOilTarget;
     property CastorPct: double read fCastorPct write fCastorPct;
@@ -57,6 +54,7 @@ type
     property SynthVolume: double read fSynthVolume;
     property NitroVolume: double read fNitroVolume;
     property MethanolVolume: double read fMethanolVolume;
+    property NitroContentByVolume: double read fNitroContentByVolume;
   end;
 
   TfrmMain = class(TForm)
@@ -115,6 +113,9 @@ type
     seMethanolMeasurementMls: TSpinBox;
     seCastorMeasurementMls: TSpinBox;
     seSynthMeasurementMls: TSpinBox;
+    Panel16: TPanel;
+    Label21: TLabel;
+    seNitroContentByVolume: TSpinBox;
     procedure FormToVars(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -157,7 +158,9 @@ begin
 
   fTotalVolume := fCastorVolume + fSynthVolume + fNitroVolume + fMethanolVolume;
 
-  fTotalDensity := (fTargetWeight / fTotalVolume) * 1000
+  fTotalDensity := (fTargetWeight / fTotalVolume) * 1000;
+
+  fNitroContentByVolume := (fNitroVolume / fTotalVolume) * 100;
 end;
 
 function TFuelCalc.CalcWeight(const APercentage: double): double;
@@ -172,11 +175,10 @@ begin
   fMethanolDensity := 792;
   fCastorDensity := 962;
   fSynthDensity := 994;
-
   fNitroTarget := 16;
   fOilTarget := 16;
   fCastorPct := 30;
-  fTargetWeight := 4305;
+  fTargetWeight := 4304.75;
 end;
 
 function TFuelCalc.GramsPerMl(const ADensityPerLitre: double): double;
@@ -235,6 +237,7 @@ begin
 
   seTotalVolume.Value := fFuelCalc.TotalVolume;
   seTotalDensity.Value := fFuelCalc.TotalDensity;
+  seNitroContentByVolume.Value := fFuelCalc.NitroContentByVolume;
 end;
 
 procedure TfrmMain.FormToVars;
