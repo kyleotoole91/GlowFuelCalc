@@ -2,7 +2,7 @@ object frmMain: TfrmMain
   Left = 0
   Top = 0
   Caption = 'Glow Fuel Calculator'
-  ClientHeight = 730
+  ClientHeight = 737
   ClientWidth = 426
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -26,11 +26,11 @@ object frmMain: TfrmMain
   object VertScrollBox1: TVertScrollBox
     Align = Client
     Size.Width = 426.000000000000000000
-    Size.Height = 690.000000000000000000
+    Size.Height = 697.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 2
+    TabOrder = 1
     Viewport.Width = 426.000000000000000000
-    Viewport.Height = 690.000000000000000000
+    Viewport.Height = 697.000000000000000000
     object pnlMain: TPanel
       Align = Top
       Padding.Left = 6.000000000000000000
@@ -38,7 +38,7 @@ object frmMain: TfrmMain
       Padding.Right = 6.000000000000000000
       Padding.Bottom = 6.000000000000000000
       Size.Width = 426.000000000000000000
-      Size.Height = 641.000000000000000000
+      Size.Height = 697.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
       object Label2: TLabel
@@ -62,7 +62,7 @@ object frmMain: TfrmMain
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 19
+        TabOrder = 21
         object Label3: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -212,7 +212,7 @@ object frmMain: TfrmMain
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 17
+        TabOrder = 19
         object Label8: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -311,7 +311,7 @@ object frmMain: TfrmMain
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 16
+        TabOrder = 18
         object Label11: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -359,7 +359,7 @@ object frmMain: TfrmMain
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 18
+        TabOrder = 20
         object Label13: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -563,7 +563,7 @@ object frmMain: TfrmMain
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 15
+        TabOrder = 17
         object Label14: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -602,7 +602,7 @@ object frmMain: TfrmMain
         TextSettings.Font.Size = 14.000000000000000000
         TextSettings.Font.StyleExt = {00070000000000000004000000}
         TextSettings.HorzAlign = Center
-        Text = 'Totals'
+        Text = 'Product Specifications'
         TabOrder = 0
       end
       object Panel15: TPanel
@@ -647,7 +647,7 @@ object frmMain: TfrmMain
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 14
+        TabOrder = 16
         object Label19: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -682,7 +682,7 @@ object frmMain: TfrmMain
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 13
+        TabOrder = 15
         object Label21: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -694,6 +694,76 @@ object frmMain: TfrmMain
           TabOrder = 0
         end
         object seNitroContentByVolume: TSpinBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Right
+          TabOrder = 1
+          TabStop = False
+          Cursor = crIBeam
+          Max = 100000.000000000000000000
+          ValueType = Float
+          ReadOnly = True
+          KeyboardType = NumbersAndPunctuation
+          Position.X = 274.000000000000000000
+          Enabled = False
+          Size.Width = 140.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+      object Panel17: TPanel
+        Align = Top
+        Position.X = 6.000000000000000000
+        Position.Y = 659.000000000000000000
+        Size.Width = 414.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 14
+        object Label22: TLabel
+          Align = Left
+          StyledSettings = [Family, Style, FontColor]
+          Size.Width = 200.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Methanol % (by Volume)'
+          TabOrder = 0
+        end
+        object seMethanolContentByVolume: TSpinBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Right
+          TabOrder = 1
+          TabStop = False
+          Cursor = crIBeam
+          Max = 100000.000000000000000000
+          ValueType = Float
+          ReadOnly = True
+          KeyboardType = NumbersAndPunctuation
+          Position.X = 274.000000000000000000
+          Enabled = False
+          Size.Width = 140.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+      object Panel18: TPanel
+        Align = Top
+        Position.X = 6.000000000000000000
+        Position.Y = 626.000000000000000000
+        Size.Width = 414.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 13
+        object Label23: TLabel
+          Align = Left
+          StyledSettings = [Family, Style, FontColor]
+          Size.Width = 200.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Oil % (by Volume)'
+          TabOrder = 0
+        end
+        object seOilContentByVolume: TSpinBox
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Right
           TabOrder = 1
