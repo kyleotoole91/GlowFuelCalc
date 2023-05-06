@@ -11,26 +11,14 @@ object frmMain: TfrmMain
   OnDestroy = FormDestroy
   OnShow = FormShow
   DesignerMasterStyle = 0
-  object Label1: TLabel
-    Align = Top
-    StyledSettings = [Family, FontColor]
-    Size.Width = 426.000000000000000000
-    Size.Height = 40.000000000000000000
-    Size.PlatformDefault = False
-    TextSettings.Font.Size = 20.000000000000000000
-    TextSettings.Font.StyleExt = {00070000000000000004000000}
-    TextSettings.HorzAlign = Center
-    Text = 'Glow Fuel Calculator'
-    TabOrder = 0
-  end
   object VertScrollBox1: TVertScrollBox
     Align = Client
     Size.Width = 426.000000000000000000
-    Size.Height = 697.000000000000000000
+    Size.Height = 737.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 1
+    TabOrder = 0
     Viewport.Width = 426.000000000000000000
-    Viewport.Height = 697.000000000000000000
+    Viewport.Height = 737.000000000000000000
     object pnlMain: TPanel
       Align = Top
       Padding.Left = 6.000000000000000000
@@ -45,7 +33,7 @@ object frmMain: TfrmMain
         Align = Top
         StyledSettings = [Family, FontColor]
         Position.X = 6.000000000000000000
-        Position.Y = 6.000000000000000000
+        Position.Y = 46.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
@@ -53,16 +41,16 @@ object frmMain: TfrmMain
         TextSettings.Font.StyleExt = {00070000000000000004000000}
         TextSettings.HorzAlign = Center
         Text = 'Densities (grams per litre)'
-        TabOrder = 3
+        TabOrder = 4
       end
       object Panel2: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 62.000000000000000000
+        Position.Y = 102.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 21
+        TabOrder = 22
         object Label3: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -92,11 +80,11 @@ object frmMain: TfrmMain
       object Panel3: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 95.000000000000000000
+        Position.Y = 135.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 9
+        TabOrder = 10
         object Label4: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -126,11 +114,11 @@ object frmMain: TfrmMain
       object Panel4: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 128.000000000000000000
+        Position.Y = 168.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 7
+        TabOrder = 8
         object Label5: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -160,11 +148,11 @@ object frmMain: TfrmMain
       object Panel5: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 29.000000000000000000
+        Position.Y = 69.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 5
+        TabOrder = 6
         object Label6: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -195,7 +183,7 @@ object frmMain: TfrmMain
         Align = Top
         StyledSettings = [Family, FontColor]
         Position.X = 6.000000000000000000
-        Position.Y = 161.000000000000000000
+        Position.Y = 201.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
@@ -203,16 +191,16 @@ object frmMain: TfrmMain
         TextSettings.Font.StyleExt = {00070000000000000004000000}
         TextSettings.HorzAlign = Center
         Text = 'Targets'
-        TabOrder = 2
+        TabOrder = 3
       end
       object Panel1: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 184.000000000000000000
+        Position.Y = 224.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 19
+        TabOrder = 20
         object Label8: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -241,11 +229,11 @@ object frmMain: TfrmMain
       object Panel6: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 217.000000000000000000
+        Position.Y = 257.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 12
+        TabOrder = 13
         object Label9: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -274,11 +262,11 @@ object frmMain: TfrmMain
       object Panel7: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 283.000000000000000000
+        Position.Y = 323.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 10
+        TabOrder = 11
         object Label10: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -307,11 +295,11 @@ object frmMain: TfrmMain
       object Panel8: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 316.000000000000000000
+        Position.Y = 356.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 18
+        TabOrder = 19
         object Label11: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -342,7 +330,7 @@ object frmMain: TfrmMain
         Align = Top
         StyledSettings = [Family, FontColor]
         Position.X = 6.000000000000000000
-        Position.Y = 349.000000000000000000
+        Position.Y = 389.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
@@ -350,16 +338,16 @@ object frmMain: TfrmMain
         TextSettings.Font.StyleExt = {00070000000000000004000000}
         TextSettings.HorzAlign = Center
         Text = 'Measurements (mls - grams)'
-        TabOrder = 1
+        TabOrder = 2
       end
       object Panel9: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 372.000000000000000000
+        Position.Y = 412.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 20
+        TabOrder = 21
         object Label13: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -406,11 +394,11 @@ object frmMain: TfrmMain
       object Panel10: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 405.000000000000000000
+        Position.Y = 445.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 4
+        TabOrder = 5
         object Label20: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -457,11 +445,11 @@ object frmMain: TfrmMain
       object Panel11: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 438.000000000000000000
+        Position.Y = 478.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 8
+        TabOrder = 9
         object Label15: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -508,11 +496,11 @@ object frmMain: TfrmMain
       object Panel12: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 471.000000000000000000
+        Position.Y = 511.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 6
+        TabOrder = 7
         object Label16: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -559,11 +547,11 @@ object frmMain: TfrmMain
       object Panel14: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 527.000000000000000000
+        Position.Y = 567.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 17
+        TabOrder = 18
         object Label14: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -595,7 +583,7 @@ object frmMain: TfrmMain
         Align = Top
         StyledSettings = [Family, FontColor]
         Position.X = 6.000000000000000000
-        Position.Y = 504.000000000000000000
+        Position.Y = 544.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
@@ -603,16 +591,16 @@ object frmMain: TfrmMain
         TextSettings.Font.StyleExt = {00070000000000000004000000}
         TextSettings.HorzAlign = Center
         Text = 'Product Specifications'
-        TabOrder = 0
+        TabOrder = 1
       end
       object Panel15: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 250.000000000000000000
+        Position.Y = 290.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 11
+        TabOrder = 12
         object Label17: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -643,11 +631,11 @@ object frmMain: TfrmMain
       object Panel13: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 560.000000000000000000
+        Position.Y = 600.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 16
+        TabOrder = 17
         object Label19: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -678,11 +666,11 @@ object frmMain: TfrmMain
       object Panel16: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 593.000000000000000000
+        Position.Y = 633.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 15
+        TabOrder = 16
         object Label21: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -713,11 +701,11 @@ object frmMain: TfrmMain
       object Panel17: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 659.000000000000000000
+        Position.Y = 699.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 14
+        TabOrder = 15
         object Label22: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -748,11 +736,11 @@ object frmMain: TfrmMain
       object Panel18: TPanel
         Align = Top
         Position.X = 6.000000000000000000
-        Position.Y = 626.000000000000000000
+        Position.Y = 666.000000000000000000
         Size.Width = 414.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 13
+        TabOrder = 14
         object Label23: TLabel
           Align = Left
           StyledSettings = [Family, Style, FontColor]
@@ -779,6 +767,20 @@ object frmMain: TfrmMain
           Size.Height = 33.000000000000000000
           Size.PlatformDefault = False
         end
+      end
+      object Label1: TLabel
+        Align = Top
+        StyledSettings = [Family, FontColor]
+        Position.X = 6.000000000000000000
+        Position.Y = 6.000000000000000000
+        Size.Width = 414.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 20.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        TextSettings.HorzAlign = Center
+        Text = 'Glow Fuel Calculator'
+        TabOrder = 0
       end
     end
   end
