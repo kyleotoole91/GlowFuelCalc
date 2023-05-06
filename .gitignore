@@ -1,0 +1,13 @@
+Android64
+Win64
+Android32
+Win32
+Android
+Win
+__history
+Android64/Debug/FuelCalc/bin/FuelCalc.apk
+AndroidManifest.template.xml
+GlowFuelCalc.res
+GlowFuelCalc.deployproj
+GlowFuelCalc.dproj.local
+FuelCalc.res
