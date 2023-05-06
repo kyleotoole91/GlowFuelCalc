@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Edit,
-  FMX.EditBox, FMX.SpinBox, FMX.StdCtrls, FMX.Controls.Presentation;
+  FMX.EditBox, FMX.SpinBox, FMX.StdCtrls, FMX.Controls.Presentation, FMX.Layouts;
 
 type
   TFuelCalc = class (TObject)
@@ -59,7 +59,8 @@ type
 
   TfrmMain = class(TForm)
     Label1: TLabel;
-    V: TPanel;
+    VertScrollBox1: TVertScrollBox;
+    pnlMain: TPanel;
     Label2: TLabel;
     Panel2: TPanel;
     Label3: TLabel;
@@ -82,37 +83,37 @@ type
     seOilTarget: TSpinBox;
     Panel7: TPanel;
     Label10: TLabel;
+    seCastorPercent: TSpinBox;
     Panel8: TPanel;
     Label11: TLabel;
+    seTargetWeight: TSpinBox;
     Label12: TLabel;
     Panel9: TPanel;
     Label13: TLabel;
     seNitroMeasurement: TSpinBox;
+    seNitroMeasurementMls: TSpinBox;
     Panel10: TPanel;
+    Label20: TLabel;
     seMethanolMeasurement: TSpinBox;
+    seMethanolMeasurementMls: TSpinBox;
     Panel11: TPanel;
     Label15: TLabel;
     seCastorMeasurement: TSpinBox;
+    seCastorMeasurementMls: TSpinBox;
     Panel12: TPanel;
     Label16: TLabel;
     seSynthMeasurement: TSpinBox;
-    Label20: TLabel;
+    seSynthMeasurementMls: TSpinBox;
     Panel14: TPanel;
     Label14: TLabel;
+    seTotalVolume: TSpinBox;
     Label18: TLabel;
     Panel15: TPanel;
     Label17: TLabel;
     seMethanolTarget: TSpinBox;
-    seCastorPercent: TSpinBox;
-    seTotalVolume: TSpinBox;
-    seTargetWeight: TSpinBox;
     Panel13: TPanel;
     Label19: TLabel;
     seTotalDensity: TSpinBox;
-    seNitroMeasurementMls: TSpinBox;
-    seMethanolMeasurementMls: TSpinBox;
-    seCastorMeasurementMls: TSpinBox;
-    seSynthMeasurementMls: TSpinBox;
     Panel16: TPanel;
     Label21: TLabel;
     seNitroContentByVolume: TSpinBox;
