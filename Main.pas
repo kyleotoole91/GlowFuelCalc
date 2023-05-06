@@ -149,6 +149,19 @@ implementation
 
 { TFuelCalc }
 
+constructor TFuelCalc.Create;
+begin
+  inherited;
+  fNitroDensity := 1140;
+  fMethanolDensity := 792;
+  fCastorDensity := 962;
+  fSynthDensity := 994;
+  fNitroTarget := 16;
+  fOilTarget := 14.93;
+  fCastorPct := 30;
+  fTargetWeight := 4294.99;
+end;
+
 procedure TFuelCalc.Calc;
 var
   castorPct: double;
@@ -174,19 +187,6 @@ end;
 function TFuelCalc.CalcWeight(const APercentage: double): double;
 begin
   result := (fTargetWeight / 100) * APercentage;
-end;
-
-constructor TFuelCalc.Create;
-begin
-  inherited;
-  fNitroDensity := 1140;
-  fMethanolDensity := 792;
-  fCastorDensity := 962;
-  fSynthDensity := 994;
-  fNitroTarget := 16;
-  fOilTarget := 14.93;
-  fCastorPct := 30;
-  fTargetWeight := 4304.75;
 end;
 
 function TFuelCalc.GramsPerMl(const ADensityPerLitre: double): double;
