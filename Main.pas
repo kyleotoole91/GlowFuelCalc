@@ -62,7 +62,6 @@ type
   end;
 
   TfrmMain = class(TForm)
-    Label1: TLabel;
     VertScrollBox1: TVertScrollBox;
     pnlMain: TPanel;
     Label2: TLabel;
@@ -127,6 +126,7 @@ type
     Panel18: TPanel;
     Label23: TLabel;
     seOilContentByVolume: TSpinBox;
+    Label1: TLabel;
     procedure FormToVars(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
