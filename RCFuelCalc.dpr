@@ -3,7 +3,8 @@ program RCFuelCalc;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  Main in 'Main.pas' {frmMain};
+  uFrmMain in 'uFrmMain.pas' {frmMain},
+  uFuelCalc in 'uFuelCalc.pas';
 
 {$R *.res}
 
