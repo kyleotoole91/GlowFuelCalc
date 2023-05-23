@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/05/04 20:21:30.000.324,=C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/05/04 21:39:08.000.870,=C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/05/04 21:46:37.000.756,C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\Main.pas=C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/05/04 21:46:37.000.756,C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\Main.fmx=C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
+    <Transaction>2023/05/04 21:46:53.000.875,C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\FuelCalc.dproj=C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
+    <Transaction>2023/05/04 21:47:31.000.889,C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\FuelCalc\FuelCalc.dproj=C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\FuelCalc.dproj</Transaction>
+    <Transaction>2023/05/04 21:47:39.000.106,C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\FuelCalc\Main.pas=C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\Main.pas</Transaction>
+    <Transaction>2023/05/04 21:47:39.000.106,C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\FuelCalc\Main.fmx=C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\Main.fmx</Transaction>
+    <Transaction>2023/05/04 23:39:05.000.367,C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\FuelCalc\GlowFuelCalc.dproj=C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\FuelCalc\FuelCalc.dproj</Transaction>
+    <Transaction>2023/05/23 20:06:11.863,C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\GlowFuelCalc\RCFuelCalc.dproj=C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\GlowFuelCalc\GlowFuelCalc.dproj</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile Android64="26081JEGR11995" Android="26081JEGR11995"/>
+	</ActiveMobileDevice>
+</BorlandProject>

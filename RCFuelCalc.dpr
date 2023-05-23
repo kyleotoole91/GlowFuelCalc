@@ -1,4 +1,4 @@
-program GlowFuelCalc;
+program RCFuelCalc;
 
 uses
   System.StartUpCopy,
