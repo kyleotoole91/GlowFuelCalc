@@ -84,6 +84,7 @@ type
     seTotalWeight: TSpinBox;
     Panel21: TPanel;
     Label1: TLabel;
+    MaterialOxfordBlueSB: TStyleBook;
     procedure FormToVars(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
