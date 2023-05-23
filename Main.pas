@@ -76,13 +76,14 @@ type
     Panel18: TPanel;
     Label23: TLabel;
     seOilContentByVolume: TSpinBox;
-    Label1: TLabel;
     Panel19: TPanel;
     rbTargetAsMls: TRadioButton;
     rbTargetAsGrams: TRadioButton;
     Panel20: TPanel;
     Label24: TLabel;
     seTotalWeight: TSpinBox;
+    Panel21: TPanel;
+    Label1: TLabel;
     procedure FormToVars(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
