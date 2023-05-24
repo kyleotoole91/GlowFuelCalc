@@ -81,16 +81,19 @@ type
     Label24: TLabel;
     seTotalWeight: TSpinBox;
     Panel21: TPanel;
-    Label1: TLabel;
+    lbHeader: TLabel;
     MaterialOxfordBlueSB: TStyleBook;
     lbSave: TLabel;
     lbDefaults: TLabel;
+    ebDensityFV: TEdit;
+    ebWeightFV: TEdit;
     procedure FormToVars(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure lbDefaultsClick(Sender: TObject);
     procedure lbSaveClick(Sender: TObject);
+    procedure rbTargetAsGramsChange(Sender: TObject);
   private
     { Private declarations }
     fFuelCalc: TFuelCalc;
@@ -109,6 +112,11 @@ implementation
 uses
   uPersistence;
 
+const
+  cProName = 'RC Fuel Calc Pro';
+  cFreeName = 'RC Fuel Calc Free';
+  cOnlyProMessage = 'Please purchase the Pro version to use this feature';
+
 {$R *.fmx}
 
 {TfrmMain}
@@ -118,6 +126,23 @@ begin
   inherited;
   fLoading := true;
   fFuelCalc := TFuelCalc.Create;
+  {$IFDEF PRO}
+  lbHeader.Text := cProName;
+  Caption := cProName;
+  ebWeightFV.Visible := false;
+  ebDensityFV.Visible := false;
+  {$ELSE}
+  lbHeader.Text := cFreeName;
+  Caption := cFreeName;
+
+  ebWeightFV.Visible := true;
+  ebWeightFV.Width := seTotalWeight.Width;
+  seTotalWeight.Visible := false;
+
+  ebDensityFV.Visible := true;
+  ebDensityFV.Width := seTotalDensity.Width;
+  seTotalDensity.Visible := false;
+  {$IFEND}
 end;
 
 procedure TfrmMain.FormDestroy(Sender: TObject);
@@ -189,10 +214,14 @@ end;
 
 procedure TfrmMain.lbSaveClick(Sender: TObject);
 begin
+  {$IFNDEF PRO}
+  ShowMessage(cOnlyProMessage);
+  {$ELSE}
   if fFuelCalc.Save then
     ShowMessage('The current settings will be loaded the next time the app launches')
   else
     ShowMessage('Error saving settings: ' + fFuelCalc.Persistence.ErrorMsg);
+  {$ENDIF}
 end;
 
 procedure TfrmMain.LoadForm;
@@ -204,6 +233,18 @@ begin
   finally
     fLoading := false;
   end;
+end;
+
+procedure TfrmMain.rbTargetAsGramsChange(Sender: TObject);
+begin
+  {$IFNDEF PRO}
+  if rbTargetAsGrams.IsChecked then begin
+    rbTargetAsMls.IsChecked := true;
+    ShowMessage(cOnlyProMessage);
+  end;
+  {$ELSE}
+  FormToVars(Sender);
+  {$ENDIF}
 end;
 
 end.

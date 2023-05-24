@@ -5,6 +5,20 @@ interface
 uses
   SysUtils, IOUtils, INIFiles;
 
+const
+  cNitroDensity = 1140;
+  cMethanolDensity = 792;
+  cCastorDensity = 962;
+  cSynthDensity = 994;
+  cNitroTarget = 16;
+  {$IFDEF PRO}
+  cOilTarget = 14.93;
+  {$ELSE}
+  cOilTarget = 12.00;
+  {$IFEND}
+  cCastorRatio = 30;
+  cYieldTarget = 1000;
+
 type
   TTargetType = (ttWeight = 0, ttVolume = 1);
 
@@ -80,16 +94,16 @@ begin
     fINIFile := TMemINIFile.Create(INIFilename);
     try
       with fDensities do begin
-        Methanol := fINIFile.ReadFloat('Densities', 'Methanol', 792);
-        Nitro := fINIFile.ReadFloat('Densities', 'Nitro', 1140);
-        CastorOil := fINIFile.ReadFloat('Densities', 'CastorOil', 962);
-        SyntheticOil := fINIFile.ReadFloat('Densities', 'SyntheticOil', 994);
+        Methanol := fINIFile.ReadFloat('Densities', 'Methanol', cMethanolDensity);
+        Nitro := fINIFile.ReadFloat('Densities', 'Nitro', cNitroDensity);
+        CastorOil := fINIFile.ReadFloat('Densities', 'CastorOil', cCastorDensity);
+        SyntheticOil := fINIFile.ReadFloat('Densities', 'SyntheticOil', cSynthDensity);
       end;
       with fTargets do begin
-        Oil := fINIFile.ReadFloat('Targets', 'Oil', 14.93);
-        Nitro := fINIFile.ReadFloat('Targets', 'Nitro', 16);
-        CastorRatio := fINIFile.ReadFloat('Targets', 'CastorRatio', 30);
-        Yield := fINIFile.ReadFloat('Targets', 'Yield', 1000);
+        Oil := fINIFile.ReadFloat('Targets', 'Oil', cOilTarget);
+        Nitro := fINIFile.ReadFloat('Targets', 'Nitro', cNitroTarget);
+        CastorRatio := fINIFile.ReadFloat('Targets', 'CastorRatio', cCastorRatio);
+        Yield := fINIFile.ReadFloat('Targets', 'Yield', cYieldTarget);
         TargetType := TTargetType(fINIFile.ReadInteger('Targets', 'TargetType', integer(ttVolume)));
       end;
     finally

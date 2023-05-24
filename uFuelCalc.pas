@@ -90,14 +90,14 @@ end;
 
 procedure TFuelCalc.ApplyDefaultValues;
 begin
-  fNitroDensity := 1140;
-  fMethanolDensity := 792;
-  fCastorDensity := 962;
-  fSynthDensity := 994;
-  fNitroTarget := 16;
-  fOilTarget := 14.93;
-  fCastorRatio := 30;
-  fTargetYield := 1000;
+  fNitroDensity := cNitroDensity;
+  fMethanolDensity := cMethanolDensity;
+  fCastorDensity := cCastorDensity;
+  fSynthDensity := cSynthDensity;
+  fNitroTarget := cNitroTarget;
+  fOilTarget := cOilTarget;
+  fCastorRatio := cCastorRatio;
+  fTargetYield := cYieldTarget;
   fTargetType := ttVolume;
 end;
 
