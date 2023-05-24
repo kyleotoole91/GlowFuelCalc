@@ -15,7 +15,7 @@ const
   cOilTarget = 14.93;
   {$ELSE}
   cOilTarget = 12.00;
-  {$IFEND}
+  {$ENDIF}
   cCastorRatio = 30;
   cYieldTarget = 1000;
 

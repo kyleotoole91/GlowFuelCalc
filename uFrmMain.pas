@@ -36,7 +36,7 @@ type
     Label10: TLabel;
     seCastorRatio: TSpinBox;
     Panel8: TPanel;
-    Label11: TLabel;
+    lbYield: TLabel;
     seTargetYield: TSpinBox;
     Label12: TLabel;
     Panel9: TPanel;
@@ -94,6 +94,7 @@ type
     procedure lbDefaultsClick(Sender: TObject);
     procedure lbSaveClick(Sender: TObject);
     procedure rbTargetAsGramsChange(Sender: TObject);
+    procedure rbTargetAsMlsChange(Sender: TObject);
   private
     { Private declarations }
     fFuelCalc: TFuelCalc;
@@ -134,15 +135,17 @@ begin
   {$ELSE}
   lbHeader.Text := cFreeName;
   Caption := cFreeName;
-
   ebWeightFV.Visible := true;
   ebWeightFV.Width := seTotalWeight.Width;
   seTotalWeight.Visible := false;
-
   ebDensityFV.Visible := true;
   ebDensityFV.Width := seTotalDensity.Width;
   seTotalDensity.Visible := false;
-  {$IFEND}
+  {$ENDIF}
+  if fFuelCalc.TargetType = ttVolume then
+    lbYield.Text := 'Desired Yield (mls)'
+  else
+    lbYield.Text := 'Desired Yield (grams)';
 end;
 
 procedure TfrmMain.FormDestroy(Sender: TObject);
@@ -243,8 +246,15 @@ begin
     ShowMessage(cOnlyProMessage);
   end;
   {$ELSE}
+  lbYield.Text := 'Desired Yield (grams)';
   FormToVars(Sender);
   {$ENDIF}
+end;
+
+procedure TfrmMain.rbTargetAsMlsChange(Sender: TObject);
+begin
+  lbYield.Text := 'Desired Yield (mls)';
+  FormToVars(Sender);
 end;
 
 end.
