@@ -2,10 +2,13 @@ unit uFuelCalc;
 
 interface
 
+uses
+  uPersistence;
+
 type
-  TTargetType = (ttWeight = 0, ttVolume = 1);
   TFuelCalc = class (TObject)
   strict private
+    fPersistence: TPersistence;
     fCastorPct: double;
     fSynthPct: double;
     fTargetType: TTargetType;
@@ -38,6 +41,9 @@ type
   public
     constructor Create;
     procedure Calc;
+    function Save: boolean;
+    procedure ApplyDefaultValues;
+    property Persistence: TPersistence read fPersistence write fPersistence;
     property NitroDensity: double read fNitroDensity write fNitroDensity;
     property MethanolDensity: double read fMethanolDensity write fMethanolDensity;
     property CastorDensity: double read fCastorDensity write fCastorDensity;
@@ -70,6 +76,20 @@ implementation
 constructor TFuelCalc.Create;
 begin
   inherited;
+  fPersistence := TPersistence.Create;
+  fNitroDensity := fPersistence.Densities.Nitro;
+  fMethanolDensity := fPersistence.Densities.Methanol;
+  fCastorDensity := fPersistence.Densities.CastorOil;
+  fSynthDensity := fPersistence.Densities.SyntheticOil;
+  fNitroTarget := fPersistence.Targets.Nitro;
+  fOilTarget := fPersistence.Targets.Oil;
+  fCastorRatio := fPersistence.Targets.CastorRatio;
+  fTargetYield := fPersistence.Targets.Yield;
+  fTargetType := fPersistence.Targets.TargetType;
+end;
+
+procedure TFuelCalc.ApplyDefaultValues;
+begin
   fNitroDensity := 1140;
   fMethanolDensity := 792;
   fCastorDensity := 962;
@@ -143,6 +163,20 @@ end;
 function TFuelCalc.GramsPerMl(const ADensityPerLitre: double): double;
 begin
   result := ADensityPerLitre / 1000;
+end;
+
+function TFuelCalc.Save: boolean;
+begin
+  fPersistence.Densities.Nitro := fNitroDensity;
+  fPersistence.Densities.Methanol := fMethanolDensity;
+  fPersistence.Densities.CastorOil := fCastorDensity;
+  fPersistence.Densities.SyntheticOil := fSynthDensity;
+  fPersistence.Targets.Nitro := fNitroTarget;
+  fPersistence.Targets.Oil := fOilTarget;
+  fPersistence.Targets.CastorRatio := fCastorRatio;
+  fPersistence.Targets.Yield := fTargetYield;
+  fPersistence.Targets.TargetType := fTargetType;
+  result := fPersistence.Save;
 end;
 
 end.

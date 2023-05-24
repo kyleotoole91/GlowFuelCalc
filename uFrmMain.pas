@@ -83,15 +83,20 @@ type
     Panel21: TPanel;
     Label1: TLabel;
     MaterialOxfordBlueSB: TStyleBook;
+    lbSave: TLabel;
+    lbDefaults: TLabel;
     procedure FormToVars(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure lbDefaultsClick(Sender: TObject);
+    procedure lbSaveClick(Sender: TObject);
   private
     { Private declarations }
     fFuelCalc: TFuelCalc;
     fLoading: boolean;
     procedure VarsToForm;
+    procedure LoadForm;
   public
     { Public declarations }
   end;
@@ -100,6 +105,9 @@ var
   frmMain: TfrmMain;
 
 implementation
+
+uses
+  uPersistence;
 
 {$R *.fmx}
 
@@ -120,13 +128,7 @@ end;
 
 procedure TfrmMain.FormShow(Sender: TObject);
 begin
-  fLoading := true;
-  try
-    fFuelCalc.Calc;
-    VarsToForm;
-  finally
-    fLoading := false;
-  end;
+  LoadForm;
 end;
 
 procedure TfrmMain.VarsToForm;
@@ -175,6 +177,32 @@ begin
       fFuelCalc.TargetType := ttWeight;
     fFuelCalc.Calc;
     VarsToForm;
+  end;
+end;
+
+procedure TfrmMain.lbDefaultsClick(Sender: TObject);
+begin
+  fFuelCalc.ApplyDefaultValues;
+  LoadForm;
+  ShowMessage('The default values have been restored');
+end;
+
+procedure TfrmMain.lbSaveClick(Sender: TObject);
+begin
+  if fFuelCalc.Save then
+    ShowMessage('The current settings will be loaded the next time the app launches')
+  else
+    ShowMessage('Error saving settings: ' + fFuelCalc.Persistence.ErrorMsg);
+end;
+
+procedure TfrmMain.LoadForm;
+begin
+  fLoading := true;
+  try
+    fFuelCalc.Calc;
+    VarsToForm;
+  finally
+    fLoading := false;
   end;
 end;
 
