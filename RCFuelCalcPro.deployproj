@@ -8,6 +8,15 @@
         <DeviceId Condition="'$(Platform)'=='Android64'">26081JEGR11995</DeviceId>
     </PropertyGroup>
     <ItemGroup Condition="'$(Platform)'=='Win64'">
+        <DeployFile Include="assets\engine-icon-pump-48.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>RCFuelCalcPro\Assets\</RemoteDir>
+            <RemoteName>Logo44x44.png</RemoteName>
+            <DeployClass>UWP_DelphiLogo44</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
         <DeployFile Include="Win64\Debug\RCFuelCalcPro.exe" Condition="'$(Config)'=='Debug'">
             <RemoteDir>RCFuelCalcPro\</RemoteDir>
             <RemoteName>RCFuelCalcPro.exe</RemoteName>
@@ -17,6 +26,15 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
             <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="assets\engine-icon-pump-144.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>RCFuelCalcPro\Assets\</RemoteDir>
+            <RemoteName>Logo150x150.png</RemoteName>
+            <DeployClass>UWP_DelphiLogo150</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
         </DeployFile>
     </ItemGroup>
     <ItemGroup Condition="'$(Platform)'=='Win32'">
@@ -29,6 +47,24 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
             <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="assets\engine-icon-pump-144.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>RCFuelCalcPro\Assets\</RemoteDir>
+            <RemoteName>Logo150x150.png</RemoteName>
+            <DeployClass>UWP_DelphiLogo150</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="assets\engine-icon-pump-48.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>RCFuelCalcPro\Assets\</RemoteDir>
+            <RemoteName>Logo44x44.png</RemoteName>
+            <DeployClass>UWP_DelphiLogo44</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
         </DeployFile>
     </ItemGroup>
     <ItemGroup Condition="'$(Platform)'=='Android64'">
@@ -430,9 +466,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="Android64\Debug\RCFuelCalc.classes" Condition="'$(Config)'=='Debug'">
+        <DeployFile Include="Android64\Debug\RCFuelCalcPro.classes" Condition="'$(Config)'=='Debug'">
             <RemoteDir>RCFuelCalcPro\classes\</RemoteDir>
-            <RemoteName>RCFuelCalc.classes</RemoteName>
+            <RemoteName>RCFuelCalcPro.classes</RemoteName>
             <DeployClass>AndroidClasses</DeployClass>
             <Operation>64</Operation>
             <LocalCommand/>

@@ -30,14 +30,14 @@ type
     Label28: TLabel;
     Panel35: TPanel;
     lbAdd1Amount: TLabel;
-    seAdd1Amt: TSpinBox;
+    seAdd1VolAmt: TSpinBox;
     lbAdditives: TLabel;
     Panel36: TPanel;
     lbOriginalFuelAmt: TLabel;
     seOrigVolume: TSpinBox;
     Panel39: TPanel;
     lbAdd2Amount: TLabel;
-    seAdd2Amt: TSpinBox;
+    seAdd2VolAmt: TSpinBox;
     Panel24: TPanel;
     lbAd2: TLabel;
     seAdd2Density: TSpinBox;
@@ -54,7 +54,7 @@ type
     seAddNitroDensity: TSpinBox;
     Panel30: TPanel;
     lbAddNitroAmount: TLabel;
-    seAddNitroAmt: TSpinBox;
+    seAddNitroVolAmt: TSpinBox;
     Panel31: TPanel;
     Label30: TLabel;
     seNewWeight: TSpinBox;
@@ -139,6 +139,9 @@ type
     Panel18: TPanel;
     Label23: TLabel;
     seOilContentByVolume: TSpinBox;
+    seAddNitroWgtAmt: TSpinBox;
+    seAdd1WgtAmt: TSpinBox;
+    seAdd2WgtAmt: TSpinBox;
     procedure AddFormToVars(Sender: TObject);
     procedure FormToVars(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -158,6 +161,7 @@ type
     fFuelCalcMix: TFuelCalcMix;
     fFuelCalcAdd: TFuelCalcAdd;
     fLoading: boolean;
+    procedure SetAdditiveState;
     procedure VarsToForm;
     procedure VarsToAddForm;
     procedure LoadForm;
@@ -302,6 +306,11 @@ end;
 procedure TfrmMain.AddFormToVars(Sender: TObject);
 begin
   if not fLoading then begin
+    if rbAddByVolume.IsChecked then
+      fFuelCalcAdd.UnitType := utVolume
+    else
+      fFuelCalcAdd.UnitType := utWeight;
+
     fFuelCalcAdd.OrigFuelDensity := seOrigFuelDensity.Value;
     fFuelCalcAdd.NitroDensity := seAddNitroDensity.Value;
     fFuelCalcAdd.Additive1Density := seAdd1Density.Value;
@@ -310,14 +319,23 @@ begin
     fFuelCalcAdd.OrigFuelVolume := seOrigVolume.Value;
     fFuelCalcAdd.OrigNitroPct := seOrigNitroPct.Value;
 
-    fFuelCalcAdd.AddNitroAmount := seAddNitroAmt.Value;
-    fFuelCalcAdd.Additive1Amount := seAdd1Amt.Value;
-    fFuelCalcAdd.Additive2Amount := seAdd2Amt.Value;
+    if fFuelCalcAdd.UnitType = utVolume then begin
+      fFuelCalcAdd.AddNitroAmount := seAddNitroVolAmt.Value;
+      fFuelCalcAdd.Additive1Amount := seAdd1VolAmt.Value;
+      fFuelCalcAdd.Additive2Amount := seAdd2VolAmt.Value;
 
-    if rbAddByVolume.IsChecked then
-      fFuelCalcAdd.UnitType := utVolume
-    else
-      fFuelCalcAdd.UnitType := utWeight;
+      seAddNitroWgtAmt.Value := fFuelCalcAdd.AddNitroAmount * fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.NitroDensity);
+      seAdd1WgtAmt.Value := fFuelCalcAdd.Additive1Amount * fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive1Density);
+      seAdd2WgtAmt.Value := fFuelCalcAdd.Additive2Amount * fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive2Density);
+    end else begin
+      fFuelCalcAdd.AddNitroAmount := seAddNitroWgtAmt.Value;
+      fFuelCalcAdd.Additive1Amount := seAdd1WgtAmt.Value;
+      fFuelCalcAdd.Additive2Amount := seAdd2WgtAmt.Value;
+
+      seAddNitroVolAmt.Value := fFuelCalcAdd.AddNitroAmount / fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.NitroDensity);
+      seAdd1VolAmt.Value := fFuelCalcAdd.Additive1Amount / fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive1Density);
+      seAdd2VolAmt.Value := fFuelCalcAdd.Additive2Amount / fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive2Density);
+    end;
 
     fFuelCalcAdd.Calc;
     VarsToAddForm;
@@ -367,9 +385,25 @@ begin
     seAdd2Density.Value := fFuelCalcAdd.Additive2Density;
     seOrigVolume.Value := fFuelCalcAdd.OrigFuelVolume;
     seOrigNitroPct.Value := fFuelCalcAdd.OrigNitroPct;
-    seAddNitroAmt.Value := fFuelCalcAdd.AddNitroAmount;
-    seAdd1Amt.Value := fFuelCalcAdd.Additive1Amount;
-    seAdd2Amt.Value := fFuelCalcAdd.Additive2Amount;
+
+    if fFuelCalcAdd.UnitType = utVolume then begin
+      seAddNitroVolAmt.Value := fFuelCalcAdd.AddNitroAmount;
+      seAdd1VolAmt.Value := fFuelCalcAdd.Additive1Amount;
+      seAdd2VolAmt.Value := fFuelCalcAdd.Additive2Amount;
+
+      seAddNitroWgtAmt.Value := fFuelCalcAdd.AddNitroAmount * fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.NitroDensity);
+      seAdd1WgtAmt.Value := fFuelCalcAdd.Additive1Amount * fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive1Density);
+      seAdd2WgtAmt.Value := fFuelCalcAdd.Additive2Amount * fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive2Density);
+    end else begin
+      seAddNitroWgtAmt.Value := fFuelCalcAdd.AddNitroAmount;
+      seAdd1WgtAmt.Value := fFuelCalcAdd.Additive1Amount;
+      seAdd2WgtAmt.Value := fFuelCalcAdd.Additive2Amount;
+
+      seAddNitroVolAmt.Value := fFuelCalcAdd.AddNitroAmount / fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.NitroDensity);
+      seAdd1VolAmt.Value := fFuelCalcAdd.Additive1Amount / fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive1Density);
+      seAdd2VolAmt.Value := fFuelCalcAdd.Additive2Amount / fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive2Density);
+    end;
+
     fFuelCalcAdd.Calc;
     VarsToAddForm;
   finally
@@ -379,9 +413,7 @@ end;
 
 procedure TfrmMain.rbAddByVolumeChange(Sender: TObject);
 begin
-  lbAddNitroAmount.Text := 'Nitromethane (mls)';
-  lbAdd1Amount.Text := 'Additive 1 (mls)';
-  lbAdd2Amount.Text := 'Additive 2 (mls)';
+  SetAdditiveState;
   lbNewNitroContent.Text := 'Nitromethane % (vol)';
   AddFormToVars(Sender);
 end;
@@ -394,9 +426,7 @@ begin
     ShowMessage(cOnlyProMessage);
   end;
   {$ELSE}
-  lbAddNitroAmount.Text := 'Nitromethane (grams)';
-  lbAdd1Amount.Text := 'Additive 1 (grams)';
-  lbAdd2Amount.Text := 'Additive 2 (grams)';
+  SetAdditiveState;
   lbNewNitroContent.Text := 'Nitromethane % (weight)';
   AddFormToVars(Sender);
   {$ENDIF}
@@ -419,6 +449,16 @@ procedure TfrmMain.rbTargetAsMlsChange(Sender: TObject);
 begin
   lbYield.Text := 'Desired Yield (mls)';
   FormToVars(Sender);
+end;
+
+procedure TfrmMain.SetAdditiveState;
+begin
+  seAddNitroVolAmt.Enabled := rbAddByVolume.IsChecked;
+  seAdd1VolAmt.Enabled  := rbAddByVolume.IsChecked;
+  seAdd2VolAmt.Enabled := rbAddByVolume.IsChecked;
+  seAddNitroWgtAmt.Enabled := rbAddByWeight.IsChecked;
+  seAdd1WgtAmt.Enabled  := rbAddByWeight.IsChecked;
+  seAdd2WgtAmt.Enabled := rbAddByWeight.IsChecked;
 end;
 
 procedure TfrmMain.tcMainChange(Sender: TObject);

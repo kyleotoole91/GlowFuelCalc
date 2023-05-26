@@ -10,13 +10,13 @@ type
   protected
     fNitroDensity: double;
     fPersistence: TPersistence;
-    function GramsPerMl(const ADensityPerLitre: double): double;
     function CalcIngredientAmount(const ATotalAmount: double; const APercentage: double): double;
   public
     constructor Create; virtual;
     destructor Destroy; override;
     procedure Calc; virtual; abstract;
     function Save: boolean; virtual; abstract;
+    function GramsPerMl(const ADensityPerLitre: double): double;
     procedure ApplyDefaultValues; virtual;
     property NitroDensity: double read fNitroDensity write fNitroDensity;
   end;
