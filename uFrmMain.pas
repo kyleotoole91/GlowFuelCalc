@@ -310,33 +310,27 @@ begin
       fFuelCalcAdd.UnitType := utVolume
     else
       fFuelCalcAdd.UnitType := utWeight;
-
     fFuelCalcAdd.OrigFuelDensity := seOrigFuelDensity.Value;
     fFuelCalcAdd.NitroDensity := seAddNitroDensity.Value;
     fFuelCalcAdd.Additive1Density := seAdd1Density.Value;
     fFuelCalcAdd.Additive2Density := seAdd2Density.Value;
-
     fFuelCalcAdd.OrigFuelVolume := seOrigVolume.Value;
     fFuelCalcAdd.OrigNitroPct := seOrigNitroPct.Value;
-
     if fFuelCalcAdd.UnitType = utVolume then begin
       fFuelCalcAdd.AddNitroAmount := seAddNitroVolAmt.Value;
       fFuelCalcAdd.Additive1Amount := seAdd1VolAmt.Value;
       fFuelCalcAdd.Additive2Amount := seAdd2VolAmt.Value;
-
-      seAddNitroWgtAmt.Value := fFuelCalcAdd.AddNitroAmount * fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.NitroDensity);
-      seAdd1WgtAmt.Value := fFuelCalcAdd.Additive1Amount * fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive1Density);
-      seAdd2WgtAmt.Value := fFuelCalcAdd.Additive2Amount * fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive2Density);
+      seAddNitroWgtAmt.Value := fFuelCalcAdd.ToWeight(fFuelCalcAdd.AddNitroAmount, fFuelCalcAdd.NitroDensity);
+      seAdd1WgtAmt.Value := fFuelCalcAdd.ToWeight(fFuelCalcAdd.Additive1Amount, fFuelCalcAdd.Additive1Density);
+      seAdd2WgtAmt.Value := fFuelCalcAdd.ToWeight(fFuelCalcAdd.Additive2Amount, fFuelCalcAdd.Additive2Density);
     end else begin
       fFuelCalcAdd.AddNitroAmount := seAddNitroWgtAmt.Value;
       fFuelCalcAdd.Additive1Amount := seAdd1WgtAmt.Value;
       fFuelCalcAdd.Additive2Amount := seAdd2WgtAmt.Value;
-
-      seAddNitroVolAmt.Value := fFuelCalcAdd.AddNitroAmount / fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.NitroDensity);
-      seAdd1VolAmt.Value := fFuelCalcAdd.Additive1Amount / fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive1Density);
-      seAdd2VolAmt.Value := fFuelCalcAdd.Additive2Amount / fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive2Density);
+      seAddNitroVolAmt.Value := fFuelCalcAdd.ToVolume(fFuelCalcAdd.AddNitroAmount, fFuelCalcAdd.NitroDensity);
+      seAdd1VolAmt.Value := fFuelCalcAdd.ToVolume(fFuelCalcAdd.Additive1Amount, fFuelCalcAdd.Additive1Density);
+      seAdd2VolAmt.Value := fFuelCalcAdd.ToVolume(fFuelCalcAdd.Additive2Amount, fFuelCalcAdd.Additive2Density);
     end;
-
     fFuelCalcAdd.Calc;
     VarsToAddForm;
   end;
@@ -377,7 +371,6 @@ begin
   try
     fFuelCalcMix.Calc;
     VarsToForm;
-
     rbAddByWeight.IsChecked := fFuelCalcAdd.UnitType = utWeight;
     seOrigFuelDensity.Value := fFuelCalcAdd.OrigFuelDensity;
     seAddNitroDensity.Value := fFuelCalcAdd.NitroDensity;
@@ -385,12 +378,10 @@ begin
     seAdd2Density.Value := fFuelCalcAdd.Additive2Density;
     seOrigVolume.Value := fFuelCalcAdd.OrigFuelVolume;
     seOrigNitroPct.Value := fFuelCalcAdd.OrigNitroPct;
-
     if fFuelCalcAdd.UnitType = utVolume then begin
       seAddNitroVolAmt.Value := fFuelCalcAdd.AddNitroAmount;
       seAdd1VolAmt.Value := fFuelCalcAdd.Additive1Amount;
       seAdd2VolAmt.Value := fFuelCalcAdd.Additive2Amount;
-
       seAddNitroWgtAmt.Value := fFuelCalcAdd.AddNitroAmount * fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.NitroDensity);
       seAdd1WgtAmt.Value := fFuelCalcAdd.Additive1Amount * fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive1Density);
       seAdd2WgtAmt.Value := fFuelCalcAdd.Additive2Amount * fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive2Density);
@@ -398,12 +389,10 @@ begin
       seAddNitroWgtAmt.Value := fFuelCalcAdd.AddNitroAmount;
       seAdd1WgtAmt.Value := fFuelCalcAdd.Additive1Amount;
       seAdd2WgtAmt.Value := fFuelCalcAdd.Additive2Amount;
-
       seAddNitroVolAmt.Value := fFuelCalcAdd.AddNitroAmount / fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.NitroDensity);
       seAdd1VolAmt.Value := fFuelCalcAdd.Additive1Amount / fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive1Density);
       seAdd2VolAmt.Value := fFuelCalcAdd.Additive2Amount / fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive2Density);
     end;
-
     fFuelCalcAdd.Calc;
     VarsToAddForm;
   finally

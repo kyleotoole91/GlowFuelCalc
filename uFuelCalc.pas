@@ -17,6 +17,8 @@ type
     procedure Calc; virtual; abstract;
     function Save: boolean; virtual; abstract;
     function GramsPerMl(const ADensityPerLitre: double): double;
+    function ToVolume(const AWeight: double; const ADensity: double): double;
+    function ToWeight(const AVolume: double; const ADensity: double): double;
     procedure ApplyDefaultValues; virtual;
     property NitroDensity: double read fNitroDensity write fNitroDensity;
   end;
@@ -123,6 +125,16 @@ begin
   result := ADensityPerLitre / 1000;
 end;
 
+function TFuelCalcBase.ToVolume(const AWeight: double; const ADensity: double): double;
+begin
+  result := AWeight / GramsPerMl(ADensity);
+end;
+
+function TFuelCalcBase.ToWeight(const AVolume: double; const ADensity: double): double;
+begin
+  result := AVolume * GramsPerMl(ADensity);
+end;
+
 function TFuelCalcBase.CalcIngredientAmount(const ATotalAmount: double; const APercentage: double): double;
 begin
   result := (ATotalAmount / 100) * APercentage;
@@ -175,18 +187,14 @@ begin
   fNitroVolume := CalcIngredientAmount(fTargetYield, fNitroTarget);
   fMethanolVolume := fTargetYield - (fCastorVolume + fSynthVolume + fNitroVolume);
   fTotalVolume := fCastorVolume + fSynthVolume + fNitroVolume + fMethanolVolume;
-
-  fCastorWeight := fCastorVolume * GramsPerMl(fCastorDensity);
-  fSynthWeight := fSynthVolume * GramsPerMl(fSynthDensity);
-  fNitroWeight := fNitroVolume * GramsPerMl(fNitroDensity);
-  fMethanolWeight := fMethanolVolume * GramsPerMl(fMethanolDensity);
-
+  fCastorWeight := ToWeight(fCastorVolume, fCastorDensity);
+  fSynthWeight := ToWeight(fSynthVolume, fSynthDensity);
+  fNitroWeight := ToWeight(fNitroVolume, fNitroDensity);
+  fMethanolWeight := ToWeight(fMethanolVolume, fMethanolDensity);
   fTotalWeight := fCastorWeight + fSynthWeight + fNitroWeight + fMethanolWeight;
-
   fNitroContentByVolume := (fNitroVolume / fTotalVolume) * 100;
   fOilContentByVolume := ((fSynthVolume + fCastorVolume) / fTotalVolume) * 100;
   fMethanolContentByVolume := (fMethanolVolume / fTotalVolume) * 100;
-
   fTotalDensity := (fTotalWeight / fTargetYield) * 1000;
 end;
 
@@ -197,18 +205,14 @@ begin
   fNitroWeight := CalcIngredientAmount(fTargetYield, fNitroTarget);
   fMethanolWeight := fTargetYield - (fCastorWeight + fSynthWeight + fNitroWeight);
   fTotalWeight := fCastorWeight + fSynthWeight + fNitroWeight + fMethanolWeight;
-
-  fCastorVolume := fCastorWeight / GramsPerMl(fCastorDensity);
-  fSynthVolume := fSynthWeight / GramsPerMl(fSynthDensity);
-  fNitroVolume := fNitroWeight / GramsPerMl(fNitroDensity);
-  fMethanolVolume := fMethanolWeight / GramsPerMl(fMethanolDensity);
-
+  fCastorVolume := ToVolume(fCastorWeight, fCastorDensity);
+  fSynthVolume := ToVolume(fSynthWeight, fSynthDensity);
+  fNitroVolume := ToVolume(fNitroWeight, fNitroDensity);
+  fMethanolVolume := ToVolume(fMethanolWeight, fMethanolDensity);
   fTotalVolume := fCastorVolume + fSynthVolume + fNitroVolume + fMethanolVolume;
-
   fNitroContentByVolume := (fNitroVolume / fTotalVolume) * 100;
   fOilContentByVolume := ((fSynthVolume + fCastorVolume) / fTotalVolume) * 100;
   fMethanolContentByVolume := (fMethanolVolume / fTotalVolume) * 100;
-
   fTotalDensity := (fTargetYield / fTotalVolume) * 1000;
 end;
 
@@ -281,22 +285,18 @@ begin
     addNitroWeight := fAddNitroAmount * GramsPerMl(fNitroDensity);
     add1Weight := fAdditive1Amount * GramsPerMl(fAdditive1Density);
     add2Weight := fAdditive2Amount * GramsPerMl(fAdditive2Density);
-
     fNewWeight := origFuelWeight + addNitroWeight + add1Weight + add2Weight;
     fNewVolume := fOrigFuelVolume + fAddNitroAmount + fAdditive1Amount + fAdditive2Amount;
     fNewDensity := (fNewWeight / fNewVolume) * 1000;
-
     newNitroMls := ((fOrigFuelVolume / 100) * fOrigNitroPct) + fAddNitroAmount;
     fNewNitroPct := (newNitroMls / fNewVolume) * 100;
   end else if fUnitType = utWeight then begin
     addNitroVol := fAddNitroAmount / GramsPerMl(fNitroDensity);
     add1Vol := fAdditive1Amount / GramsPerMl(fAdditive1Density);
     add2Vol := fAdditive2Amount / GramsPerMl(fAdditive2Density);
-
     fNewWeight := origFuelWeight + fAddNitroAmount + fAdditive1Amount + fAdditive2Amount;
     fNewVolume := fOrigFuelVolume + addNitroVol + add1Vol + add2Vol;
     fNewDensity := (fNewWeight / fNewVolume) * 1000;
-
     newNitroGrams := ((origFuelWeight / 100) * fOrigNitroPct) + fAddNitroAmount;
     fNewNitroPct := (newNitroGrams / fNewWeight) * 100;
   end;
