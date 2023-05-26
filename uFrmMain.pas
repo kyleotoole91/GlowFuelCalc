@@ -360,7 +360,6 @@ begin
     fFuelCalcMix.Calc;
     VarsToForm;
 
-    fFuelCalcAdd.Calc;
     rbAddByWeight.IsChecked := fFuelCalcAdd.UnitType = utWeight;
     seOrigFuelDensity.Value := fFuelCalcAdd.OrigFuelDensity;
     seAddNitroDensity.Value := fFuelCalcAdd.NitroDensity;
@@ -371,6 +370,7 @@ begin
     seAddNitroAmt.Value := fFuelCalcAdd.AddNitroAmount;
     seAdd1Amt.Value := fFuelCalcAdd.Additive1Amount;
     seAdd2Amt.Value := fFuelCalcAdd.Additive2Amount;
+    fFuelCalcAdd.Calc;
     VarsToAddForm;
   finally
     fLoading := false;
