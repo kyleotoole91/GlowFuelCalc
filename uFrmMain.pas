@@ -381,7 +381,7 @@ procedure TfrmMain.rbAddByVolumeChange(Sender: TObject);
 begin
   lbAddNitroAmount.Text := 'Nitromethane (mls)';
   lbAdd1Amount.Text := 'Additive 1 (mls)';
-  lbAdd2Amount.Text := 'Additive 1 (mls)';
+  lbAdd2Amount.Text := 'Additive 2 (mls)';
   lbNewNitroContent.Text := 'Nitromethane % (vol)';
   AddFormToVars(Sender);
 end;
@@ -396,7 +396,7 @@ begin
   {$ELSE}
   lbAddNitroAmount.Text := 'Nitromethane (grams)';
   lbAdd1Amount.Text := 'Additive 1 (grams)';
-  lbAdd2Amount.Text := 'Additive 1 (grams)';
+  lbAdd2Amount.Text := 'Additive 2 (grams)';
   lbNewNitroContent.Text := 'Nitromethane % (weight)';
   AddFormToVars(Sender);
   {$ENDIF}
