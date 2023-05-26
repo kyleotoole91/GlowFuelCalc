@@ -140,14 +140,14 @@ begin
       end;
 
       with fOriginalFuel do begin
-        Volume := fINIFile.ReadFloat('Targets', 'OriginalFuelVol', cOrigFuelVolume);
-        NitroPct := fINIFile.ReadFloat('Targets', 'OrigNitroPct', cOrigNitroPct);
+        Volume := fINIFile.ReadFloat('OriginalFuel', 'OrigFuelVol', cOrigFuelVolume);
+        NitroPct := fINIFile.ReadFloat('OriginalFuel', 'OrigNitroPct', cOrigNitroPct);
       end;
 
       with fAdditives do begin
-        NitroAmount := fINIFile.ReadFloat('Targets', 'AddNitroAmount', 0);
-        Additive1Amount := fINIFile.ReadFloat('Targets', 'Additive1Amount', 0);
-        Additive2Amount := fINIFile.ReadFloat('Targets', 'Additive2Amount', 0);
+        NitroAmount := fINIFile.ReadFloat('Additives', 'AddNitroAmount', 0);
+        Additive1Amount := fINIFile.ReadFloat('Additives', 'Additive1Amount', 0);
+        Additive2Amount := fINIFile.ReadFloat('Additives', 'Additive2Amount', 0);
       end;
 
       with fTargets do begin
@@ -185,13 +185,13 @@ begin
         fINIFile.WriteFloat('Densities', 'Additive2', Additive2);
       end;
       with fOriginalFuel do begin
-         fINIFile.WriteFloat('Targets', 'Oil', Volume);
-         fINIFile.WriteFloat('Targets', 'Nitro', NitroPct);
+         fINIFile.WriteFloat('OriginalFuel', 'OrigFuelVol', Volume);
+         fINIFile.WriteFloat('OriginalFuel', 'OrigNitroPct', NitroPct);
       end;
       with fAdditives do begin
-        fINIFile.WriteFloat('Targets', 'AddNitroAmount', NitroAmount);
-        fINIFile.WriteFloat('Targets', 'Additive1Amount', Additive1Amount);
-        fINIFile.WriteFloat('Targets', 'Additive2Amount', Additive2Amount);
+        fINIFile.WriteFloat('Additives', 'AddNitroAmount', NitroAmount);
+        fINIFile.WriteFloat('Additives', 'Additive1Amount', Additive1Amount);
+        fINIFile.WriteFloat('Additives', 'Additive2Amount', Additive2Amount);
       end;
       with fTargets do begin
         fINIFile.WriteFloat('Targets', 'Oil', Oil);

@@ -319,6 +319,7 @@ end;
 
 function TFuelCalcAdd.Save: boolean;
 begin
+  fPersistence.Densities.OrigFuel := fOrigFuelDensity;
   fPersistence.Densities.AddNitro := fNitroDensity;
   fPersistence.Densities.Additive1 := fAdditive1Density;
   fPersistence.Densities.Additive2 := fAdditive2Density;
