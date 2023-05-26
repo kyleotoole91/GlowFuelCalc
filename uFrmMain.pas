@@ -63,7 +63,7 @@ type
     lbNewNitroContent: TLabel;
     seNewNitro: TSpinBox;
     Panel34: TPanel;
-    Label32: TLabel;
+    lbOrigNitroContent: TLabel;
     seOrigNitroPct: TSpinBox;
     Panel25: TPanel;
     rbAddByWeight: TRadioButton;
@@ -404,6 +404,7 @@ procedure TfrmMain.rbAddByVolumeChange(Sender: TObject);
 begin
   SetAdditiveState;
   lbNewNitroContent.Text := 'Nitromethane % (vol)';
+  lbOrigNitroContent.Text := 'Nitromethane % (vol)';
   AddFormToVars(Sender);
 end;
 
@@ -417,6 +418,7 @@ begin
   {$ELSE}
   SetAdditiveState;
   lbNewNitroContent.Text := 'Nitromethane % (weight)';
+  lbOrigNitroContent.Text := 'Nitromethane % (weight)';
   AddFormToVars(Sender);
   {$ENDIF}
 end;
