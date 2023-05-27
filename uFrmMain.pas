@@ -142,6 +142,12 @@ type
     seAddNitroWgtAmt: TSpinBox;
     seAdd1WgtAmt: TSpinBox;
     seAdd2WgtAmt: TSpinBox;
+    Panel22: TPanel;
+    lbAdditive1Pct: TLabel;
+    seAdditive1Pct: TSpinBox;
+    Panel33: TPanel;
+    lbAdditive2Pct: TLabel;
+    seAdditive2Pct: TSpinBox;
     procedure AddFormToVars(Sender: TObject);
     procedure FormToVars(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -342,6 +348,8 @@ begin
   seNewWeight.Value := fFuelCalcAdd.NewWeight;
   seNewDensity.Value := fFuelCalcAdd.NewDensity;
   seNewNitro.Value := fFuelCalcAdd.NewNitroPct;
+  seAdditive1Pct.Value := fFuelCalcAdd.NewAdd1Pct;
+  seAdditive2Pct.Value := fFuelCalcAdd.NewAdd2Pct;
 end;
 
 procedure TfrmMain.lbDefaultsClick(Sender: TObject);
@@ -405,6 +413,8 @@ begin
   SetAdditiveState;
   lbNewNitroContent.Text := 'Nitromethane % (vol)';
   lbOrigNitroContent.Text := 'Nitromethane % (vol)';
+  lbAdditive1Pct.Text := 'Additive 1 % (vol)';
+  lbAdditive2Pct.Text := 'Additive 2 % (vol)';
   AddFormToVars(Sender);
 end;
 
@@ -419,6 +429,8 @@ begin
   SetAdditiveState;
   lbNewNitroContent.Text := 'Nitromethane % (weight)';
   lbOrigNitroContent.Text := 'Nitromethane % (weight)';
+  lbAdditive1Pct.Text := 'Additive 1 % (weight)';
+  lbAdditive2Pct.Text := 'Additive 2 % (weight)';
   AddFormToVars(Sender);
   {$ENDIF}
 end;

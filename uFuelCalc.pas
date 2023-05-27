@@ -38,6 +38,8 @@ type
     fNewDensity: double;
     fNewWeight: double;
     fNewNitroPct: double;
+    fNewAdd1Pct: double;
+    fNewAdd2Pct: double;
   public
     constructor Create; override;
     procedure Calc; override;
@@ -56,6 +58,8 @@ type
     property NewDensity: double read fNewDensity;
     property NewWeight: double read fNewWeight;
     property NewNitroPct: double read fNewNitroPct;
+    property NewAdd1Pct: double read fNewAdd1Pct;
+    property NewAdd2Pct: double read fNewAdd2Pct;
   end;
 
   TFuelCalcMix = class (TFuelCalcBase)
@@ -280,25 +284,29 @@ var
   add2Vol: double;
   newNitroGrams: double;
 begin
-  origFuelWeight := fOrigFuelVolume * GramsPerMl(fOrigFuelDensity);
+  origFuelWeight := ToWeight(fOrigFuelVolume, fOrigFuelDensity);
   if fUnitType = utVolume then begin
-    addNitroWeight := fAddNitroAmount * GramsPerMl(fNitroDensity);
-    add1Weight := fAdditive1Amount * GramsPerMl(fAdditive1Density);
-    add2Weight := fAdditive2Amount * GramsPerMl(fAdditive2Density);
+    addNitroWeight := ToWeight(fAddNitroAmount, fNitroDensity);
+    add1Weight := ToWeight(fAdditive1Amount, fAdditive1Density);
+    add2Weight := ToWeight(fAdditive2Amount, fAdditive2Density);
     fNewWeight := origFuelWeight + addNitroWeight + add1Weight + add2Weight;
     fNewVolume := fOrigFuelVolume + fAddNitroAmount + fAdditive1Amount + fAdditive2Amount;
     fNewDensity := (fNewWeight / fNewVolume) * 1000;
     newNitroMls := ((fOrigFuelVolume / 100) * fOrigNitroPct) + fAddNitroAmount;
     fNewNitroPct := (newNitroMls / fNewVolume) * 100;
+    fNewAdd1Pct := (fAdditive1Amount / fNewVolume) * 100;
+    fNewAdd2Pct := (fAdditive2Amount / fNewVolume) * 100;
   end else if fUnitType = utWeight then begin
-    addNitroVol := fAddNitroAmount / GramsPerMl(fNitroDensity);
-    add1Vol := fAdditive1Amount / GramsPerMl(fAdditive1Density);
-    add2Vol := fAdditive2Amount / GramsPerMl(fAdditive2Density);
+    addNitroVol := ToVolume(fAddNitroAmount, fNitroDensity);
+    add1Vol := ToVolume(fAdditive1Amount, fAdditive1Density);
+    add2Vol := ToVolume(fAdditive2Amount, fAdditive2Density);
     fNewWeight := origFuelWeight + fAddNitroAmount + fAdditive1Amount + fAdditive2Amount;
     fNewVolume := fOrigFuelVolume + addNitroVol + add1Vol + add2Vol;
     fNewDensity := (fNewWeight / fNewVolume) * 1000;
     newNitroGrams := ((origFuelWeight / 100) * fOrigNitroPct) + fAddNitroAmount;
     fNewNitroPct := (newNitroGrams / fNewWeight) * 100;
+    fNewAdd1Pct := (fAdditive1Amount / fNewWeight) * 100;
+    fNewAdd2Pct := (fAdditive2Amount / fNewWeight) * 100;
   end;
 end;
 
