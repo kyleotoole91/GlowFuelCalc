@@ -148,6 +148,7 @@ begin
         NitroAmount := fINIFile.ReadFloat('Additives', 'AddNitroAmount', 0);
         Additive1Amount := fINIFile.ReadFloat('Additives', 'Additive1Amount', 0);
         Additive2Amount := fINIFile.ReadFloat('Additives', 'Additive2Amount', 0);
+        fAddUnitType := TUnitType(fINIFile.ReadInteger('Additives', 'UnitType', integer(utVolume)));
       end;
 
       with fTargets do begin
@@ -192,6 +193,7 @@ begin
         fINIFile.WriteFloat('Additives', 'AddNitroAmount', NitroAmount);
         fINIFile.WriteFloat('Additives', 'Additive1Amount', Additive1Amount);
         fINIFile.WriteFloat('Additives', 'Additive2Amount', Additive2Amount);
+        fINIFile.WriteInteger('Additives', 'UnitType', integer(fAddUnitType));
       end;
       with fTargets do begin
         fINIFile.WriteFloat('Targets', 'Oil', Oil);
