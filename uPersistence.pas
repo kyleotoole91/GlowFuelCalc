@@ -11,11 +11,11 @@ const
   cCastorDensity = 962;
   cSynthDensity = 994;
   cOrigFuelDensity = 848;
-  cNitroTarget = 16;
+  cNitroTarget = 12;
   cOrigFuelVolume = 1000;
-  cOrigNitroPct = 16;
+  cOrigNitroPct = 12;
   {$IFDEF PRO}
-  cOilTarget = 14.93;
+  cOilTarget = 10.00;
   {$ELSE}
   cOilTarget = 12.00;
   {$ENDIF}

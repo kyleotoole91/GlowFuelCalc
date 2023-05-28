@@ -182,6 +182,7 @@ type
     procedure rbAddByVolumeChange(Sender: TObject);
     procedure AddUnitChange(Sender: TObject);
     procedure tcMainChange(Sender: TObject);
+    procedure seTotalDensityChange(Sender: TObject);
   private
     { Private declarations }
     fOrigMainHeight: single;
@@ -202,6 +203,9 @@ type
 
 var
   frmMain: TfrmMain;
+
+const
+  cEfre16EUDensity = 859.00;
 
 implementation
 
@@ -483,6 +487,14 @@ begin
   seAddNitroWgtAmt.Enabled := rbAddByWeight.IsChecked;
   seAdd1WgtAmt.Enabled  := rbAddByWeight.IsChecked;
   seAdd2WgtAmt.Enabled := rbAddByWeight.IsChecked;
+end;
+
+procedure TfrmMain.seTotalDensityChange(Sender: TObject);
+begin
+  if seTotalDensity.Value > cEfre16EUDensity then
+    seTotalDensity.TextSettings.FontColor := TAlphaColors.Crimson
+  else
+    seTotalDensity.TextSettings.FontColor := TAlphaColors.Aliceblue;
 end;
 
 procedure TfrmMain.tcMainChange(Sender: TObject);

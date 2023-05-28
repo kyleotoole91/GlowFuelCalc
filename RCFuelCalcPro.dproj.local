@@ -20,6 +20,6 @@
     <Transaction>2023/05/24 22:53:49.000.532,C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\GlowFuelCalc\RCFuelCalc.dproj=C:\Users\kyle-\Documents\Embarcadero\Studio\Projects\GlowFuelCalc\RCFuelCalcPro.dproj</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
-		<NoProfile Android64="26081JEGR11995" Android="26081JEGR11995"/>
+		<NoProfile Android64="26081JEGR11995" Android=""/>
 	</ActiveMobileDevice>
 </BorlandProject>
