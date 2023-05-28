@@ -104,25 +104,17 @@ type
     Label12: TLabel;
     Panel10: TPanel;
     Label20: TLabel;
-    seMethanolMeasurementWeight: TSpinBox;
     seMethanolMeasurementVol: TSpinBox;
     Panel9: TPanel;
     Label13: TLabel;
-    seNitroMeasurementWeight: TSpinBox;
     seNitroMeasurementVol: TSpinBox;
     Panel11: TPanel;
     Label15: TLabel;
-    seCastorMeasurementWeight: TSpinBox;
     seCastorMeasurementVol: TSpinBox;
     Panel12: TPanel;
     Label16: TLabel;
-    seSynthMeasurementWeight: TSpinBox;
     seSynthMeasurementVol: TSpinBox;
     Label18: TLabel;
-    Panel13: TPanel;
-    Label19: TLabel;
-    seTotalDensity: TSpinBox;
-    ebDensityFV: TEdit;
     Panel20: TPanel;
     Label24: TLabel;
     seTotalWeight: TSpinBox;
@@ -139,15 +131,44 @@ type
     Panel18: TPanel;
     Label23: TLabel;
     seOilContentByVolume: TSpinBox;
-    seAddNitroWgtAmt: TSpinBox;
-    seAdd1WgtAmt: TSpinBox;
-    seAdd2WgtAmt: TSpinBox;
     Panel22: TPanel;
     lbAdditive1Pct: TLabel;
     seAdditive1Pct: TSpinBox;
     Panel33: TPanel;
     lbAdditive2Pct: TLabel;
     seAdditive2Pct: TSpinBox;
+    Panel37: TPanel;
+    seAddNitroWgtAmt: TSpinBox;
+    Label31: TLabel;
+    Label32: TLabel;
+    Panel38: TPanel;
+    Label29: TLabel;
+    seAdd1WgtAmt: TSpinBox;
+    Panel40: TPanel;
+    Label33: TLabel;
+    seAdd2WgtAmt: TSpinBox;
+    Label34: TLabel;
+    Label35: TLabel;
+    Panel41: TPanel;
+    seMethanolMeasurementWeight: TSpinBox;
+    Label37: TLabel;
+    Label38: TLabel;
+    Panel42: TPanel;
+    seNitroMeasurementWeight: TSpinBox;
+    Label40: TLabel;
+    Label41: TLabel;
+    Panel43: TPanel;
+    seCastorMeasurementWeight: TSpinBox;
+    Label43: TLabel;
+    Label44: TLabel;
+    Panel44: TPanel;
+    seSynthMeasurementWeight: TSpinBox;
+    Label39: TLabel;
+    Label42: TLabel;
+    Panel13: TPanel;
+    Label19: TLabel;
+    seTotalDensity: TSpinBox;
+    ebDensityFV: TEdit;
     procedure AddFormToVars(Sender: TObject);
     procedure FormToVars(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -203,9 +224,9 @@ begin
     lbAdd1Amount.Text := 'Additive 1 (mls)';
     lbAdd2Amount.Text := 'Additive 2 (mls)';
   end else begin
-    lbAddNitroAmount.Text := 'Nitromethane (grams)';
-    lbAdd1Amount.Text := 'Additive 1 (grams)';
-    lbAdd2Amount.Text := 'Additive 2 (grams)';
+    lbAddNitroAmount.Text := 'Nitromethane (g)';
+    lbAdd1Amount.Text := 'Additive 1 (g)';
+    lbAdd2Amount.Text := 'Additive 2 (g)';
   end;
   AddFormToVars(Sender);
 end;
@@ -240,9 +261,9 @@ begin
   ebProAddDensity.Width := seNewDensity.Width;
   {$ENDIF}
   if fFuelCalcMix.TargetType = utVolume then
-    lbYield.Text := 'Desired Yield (mls)'
+    lbYield.Text := 'Desired Yield (ml)'
   else
-    lbYield.Text := 'Desired Yield (grams)';
+    lbYield.Text := 'Desired Yield (g)';
 end;
 
 procedure TfrmMain.FormDestroy(Sender: TObject);
@@ -443,14 +464,14 @@ begin
     ShowMessage(cOnlyProMessage);
   end;
   {$ELSE}
-  lbYield.Text := 'Desired Yield (grams)';
+  lbYield.Text := 'Desired Yield (g)';
   FormToVars(Sender);
   {$ENDIF}
 end;
 
 procedure TfrmMain.rbTargetAsMlsChange(Sender: TObject);
 begin
-  lbYield.Text := 'Desired Yield (mls)';
+  lbYield.Text := 'Desired Yield (ml)';
   FormToVars(Sender);
 end;
 
