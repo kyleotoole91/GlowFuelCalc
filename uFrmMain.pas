@@ -191,6 +191,7 @@ type
     lbNitroTargetUnit: TLabel;
     lbTotalOilTargetUnit: TLabel;
     lbCastorRatioUnit: TLabel;
+    Label54: TLabel;
     procedure AddFormToVars(Sender: TObject);
     procedure FormToVars(Sender: TObject);
     procedure FormCreate(Sender: TObject);
