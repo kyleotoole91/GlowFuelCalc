@@ -203,7 +203,6 @@ type
     procedure rbTargetAsMlsChange(Sender: TObject);
     procedure rbAddByWeightChange(Sender: TObject);
     procedure rbAddByVolumeChange(Sender: TObject);
-    procedure AddUnitChange(Sender: TObject);
     procedure tcMainChange(Sender: TObject);
   private
     { Private declarations }
@@ -244,20 +243,6 @@ const
 
 {TfrmMain}
 
-procedure TfrmMain.AddUnitChange(Sender: TObject);
-begin
-  if rbAddByVolume.IsChecked then begin
-    lbAddNitroAmount.Text := 'Nitromethane (mls)';
-    lbAdd1Amount.Text := 'Additive 1 (mls)';
-    lbAdd2Amount.Text := 'Additive 2 (mls)';
-  end else begin
-    lbAddNitroAmount.Text := 'Nitromethane (g)';
-    lbAdd1Amount.Text := 'Additive 1 (g)';
-    lbAdd2Amount.Text := 'Additive 2 (g)';
-  end;
-  AddFormToVars(Sender);
-end;
-
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   inherited;
@@ -291,9 +276,9 @@ begin
   ebProNitroByWeight.Width := seNewNitroByWeight.Width;
   {$ENDIF}
   if fFuelCalcMix.TargetType = utVolume then
-    lbYieldUnit.Text := '(ml)'
+    lbYieldUnit.Text := 'ml'
   else
-    lbYieldUnit.Text := '(g)';
+    lbYieldUnit.Text := 'g';
 end;
 
 procedure TfrmMain.FormDestroy(Sender: TObject);
@@ -463,9 +448,9 @@ end;
 procedure TfrmMain.rbAddByVolumeChange(Sender: TObject);
 begin
   SetAdditiveState;
-  lbOrigNitroContent2.Text := '(Vol)';
-  lbAdditive1Pct2.Text := '(Vol)';
-  lbAdditive2Pct2.Text := '(Vol)';
+  lbOrigNitroContent2.Text := 'Vol';
+  lbAdditive1Pct2.Text := 'Vol';
+  lbAdditive2Pct2.Text := 'Vol';
   AddFormToVars(Sender);
 end;
 
@@ -478,9 +463,9 @@ begin
   end;
   {$ELSE}
   SetAdditiveState;
-  lbOrigNitroContent2.Text := '(Wgt)';
-  lbAdditive1Pct2.Text := '(Wgt)';
-  lbAdditive2Pct2.Text := '(Wgt)';
+  lbOrigNitroContent2.Text := 'Wgt';
+  lbAdditive1Pct2.Text := 'Wgt';
+  lbAdditive2Pct2.Text := 'Wgt';
   AddFormToVars(Sender);
   {$ENDIF}
 end;
@@ -493,22 +478,22 @@ begin
     ShowMessage(cOnlyProMessage);
   end;
   {$ELSE}
-  lbYieldUnit.Text := '(g)';
-  lbMethTargetUnit.Text := '(Wgt)';
-  lbNitroTargetUnit.Text := '(Wgt)';
-  lbTotalOilTargetUnit.Text := '(Wgt)';
-  lbCastorRatioUnit.Text := '(Wgt)';
+  lbYieldUnit.Text := 'g';
+  lbMethTargetUnit.Text := 'Wgt';
+  lbNitroTargetUnit.Text := 'Wgt';
+  lbTotalOilTargetUnit.Text := 'Wgt';
+  lbCastorRatioUnit.Text := 'Wgt';
   FormToVars(Sender);
   {$ENDIF}
 end;
 
 procedure TfrmMain.rbTargetAsMlsChange(Sender: TObject);
 begin
-  lbYieldUnit.Text := '(ml)';
-  lbMethTargetUnit.Text := '(Vol)';
-  lbNitroTargetUnit.Text := '(Vol)';
-  lbTotalOilTargetUnit.Text := '(Vol)';
-  lbCastorRatioUnit.Text := '(Vol)';
+  lbYieldUnit.Text := 'ml';
+  lbMethTargetUnit.Text := 'Vol';
+  lbNitroTargetUnit.Text := 'Vol';
+  lbTotalOilTargetUnit.Text := 'Vol';
+  lbCastorRatioUnit.Text := 'Vol';
   FormToVars(Sender);
 end;
 
