@@ -40,6 +40,8 @@ type
     fNewNitroPct: double;
     fNewAdd1Pct: double;
     fNewAdd2Pct: double;
+    fNewNitroWeightPct: double;
+    fNewNitroVolumePct: double;
   public
     constructor Create; override;
     procedure Calc; override;
@@ -60,6 +62,8 @@ type
     property NewNitroPct: double read fNewNitroPct;
     property NewAdd1Pct: double read fNewAdd1Pct;
     property NewAdd2Pct: double read fNewAdd2Pct;
+    property NewNitroWeightPct: double read fNewNitroWeightPct;
+    property NewNitroVolumePct: double read fNewNitroVolumePct;
   end;
 
   TFuelCalcMix = class (TFuelCalcBase)
@@ -296,6 +300,8 @@ begin
     fNewNitroPct := (newNitroMls / fNewVolume) * 100;
     fNewAdd1Pct := (fAdditive1Amount / fNewVolume) * 100;
     fNewAdd2Pct := (fAdditive2Amount / fNewVolume) * 100;
+    fNewNitroWeightPct := (ToWeight(newNitroMls, fNitroDensity) / fNewWeight) * 100;
+    fNewNitroVolumePct := fNewNitroPct;
   end else if fUnitType = utWeight then begin
     addNitroVol := ToVolume(fAddNitroAmount, fNitroDensity);
     add1Vol := ToVolume(fAdditive1Amount, fAdditive1Density);
@@ -307,6 +313,8 @@ begin
     fNewNitroPct := (newNitroGrams / fNewWeight) * 100;
     fNewAdd1Pct := (fAdditive1Amount / fNewWeight) * 100;
     fNewAdd2Pct := (fAdditive2Amount / fNewWeight) * 100;
+    fNewNitroVolumePct := (ToVolume(newNitroGrams, fNitroDensity) / fNewVolume) * 100;
+    fNewNitroWeightPct := fNewNitroPct;
   end;
 end;
 

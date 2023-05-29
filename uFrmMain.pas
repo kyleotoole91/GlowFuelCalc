@@ -61,7 +61,7 @@ type
     ebProAddWeight: TEdit;
     Panel32: TPanel;
     lbNewNitroContent: TLabel;
-    seNewNitro: TSpinBox;
+    seNewNitroByVol: TSpinBox;
     Panel34: TPanel;
     lbOrigNitroContent: TLabel;
     seOrigNitroPct: TSpinBox;
@@ -169,6 +169,24 @@ type
     Label19: TLabel;
     seTotalDensity: TSpinBox;
     ebDensityFV: TEdit;
+    Label36: TLabel;
+    Label45: TLabel;
+    Label46: TLabel;
+    Label47: TLabel;
+    Label48: TLabel;
+    Label49: TLabel;
+    lbYieldUnit: TLabel;
+    Panel45: TPanel;
+    seNewNitroByWeight: TSpinBox;
+    Label50: TLabel;
+    lbNewNitroContentBy: TLabel;
+    lbAdditive1Pct2: TLabel;
+    lbAdditive2Pct2: TLabel;
+    ebProNitroByWeight: TEdit;
+    Label51: TLabel;
+    lbOrigNitroContent2: TLabel;
+    Label52: TLabel;
+    Label53: TLabel;
     procedure AddFormToVars(Sender: TObject);
     procedure FormToVars(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -182,7 +200,6 @@ type
     procedure rbAddByVolumeChange(Sender: TObject);
     procedure AddUnitChange(Sender: TObject);
     procedure tcMainChange(Sender: TObject);
-    procedure seTotalDensityChange(Sender: TObject);
   private
     { Private declarations }
     fOrigMainHeight: single;
@@ -206,6 +223,7 @@ var
 
 const
   cEfre16EUDensity = 859.00;
+  cEfre16EUPct = 16.00;
 
 implementation
 
@@ -250,6 +268,7 @@ begin
   ebDensityFV.Visible := false;
   ebProAddWeight.Visible := false;
   ebProAddDensity.Visible := false;
+  ebProNitroByWeight.Visible := false;
   {$ELSE}
   lbHeader.Text := cFreeName;
   Caption := cFreeName;
@@ -261,13 +280,15 @@ begin
   seTotalDensity.Visible := false;
   seNewWeight.Visible := false;
   seNewDensity.Visible := false;
+  seNewNitroByWeight.Visible := false;
   ebProAddWeight.Width := seNewWeight.Width;
   ebProAddDensity.Width := seNewDensity.Width;
+  ebProNitroByWeight.Width := seNewNitroByWeight.Width;
   {$ENDIF}
   if fFuelCalcMix.TargetType = utVolume then
-    lbYield.Text := 'Desired Yield (ml)'
+    lbYieldUnit.Text := '(ml)'
   else
-    lbYield.Text := 'Desired Yield (g)';
+    lbYieldUnit.Text := '(g)';
 end;
 
 procedure TfrmMain.FormDestroy(Sender: TObject);
@@ -372,7 +393,8 @@ begin
   seNewVolume.Value := fFuelCalcAdd.NewVolume;
   seNewWeight.Value := fFuelCalcAdd.NewWeight;
   seNewDensity.Value := fFuelCalcAdd.NewDensity;
-  seNewNitro.Value := fFuelCalcAdd.NewNitroPct;
+  seNewNitroByVol.Value := fFuelCalcAdd.NewNitroVolumePct;
+  seNewNitroByWeight.Value := fFuelCalcAdd.NewNitroWeightPct;
   seAdditive1Pct.Value := fFuelCalcAdd.NewAdd1Pct;
   seAdditive2Pct.Value := fFuelCalcAdd.NewAdd2Pct;
 end;
@@ -436,10 +458,9 @@ end;
 procedure TfrmMain.rbAddByVolumeChange(Sender: TObject);
 begin
   SetAdditiveState;
-  lbNewNitroContent.Text := 'Nitromethane % (vol)';
-  lbOrigNitroContent.Text := 'Nitromethane % (vol)';
-  lbAdditive1Pct.Text := 'Additive 1 % (vol)';
-  lbAdditive2Pct.Text := 'Additive 2 % (vol)';
+  lbOrigNitroContent2.Text := '(Vol)';
+  lbAdditive1Pct2.Text := '(Vol)';
+  lbAdditive2Pct2.Text := '(Vol)';
   AddFormToVars(Sender);
 end;
 
@@ -452,10 +473,9 @@ begin
   end;
   {$ELSE}
   SetAdditiveState;
-  lbNewNitroContent.Text := 'Nitromethane % (weight)';
-  lbOrigNitroContent.Text := 'Nitromethane % (weight)';
-  lbAdditive1Pct.Text := 'Additive 1 % (weight)';
-  lbAdditive2Pct.Text := 'Additive 2 % (weight)';
+  lbOrigNitroContent2.Text := '(Wgt)';
+  lbAdditive1Pct2.Text := '(Wgt)';
+  lbAdditive2Pct2.Text := '(Wgt)';
   AddFormToVars(Sender);
   {$ENDIF}
 end;
@@ -468,14 +488,14 @@ begin
     ShowMessage(cOnlyProMessage);
   end;
   {$ELSE}
-  lbYield.Text := 'Desired Yield (g)';
+  lbYieldUnit.Text := '(g)';
   FormToVars(Sender);
   {$ENDIF}
 end;
 
 procedure TfrmMain.rbTargetAsMlsChange(Sender: TObject);
 begin
-  lbYield.Text := 'Desired Yield (ml)';
+  lbYieldUnit.Text := '(ml)';
   FormToVars(Sender);
 end;
 
@@ -487,14 +507,6 @@ begin
   seAddNitroWgtAmt.Enabled := rbAddByWeight.IsChecked;
   seAdd1WgtAmt.Enabled  := rbAddByWeight.IsChecked;
   seAdd2WgtAmt.Enabled := rbAddByWeight.IsChecked;
-end;
-
-procedure TfrmMain.seTotalDensityChange(Sender: TObject);
-begin
-  if seTotalDensity.Value > cEfre16EUDensity then
-    seTotalDensity.TextSettings.FontColor := TAlphaColors.Crimson
-  else
-    seTotalDensity.TextSettings.FontColor := TAlphaColors.Aliceblue;
 end;
 
 procedure TfrmMain.tcMainChange(Sender: TObject);

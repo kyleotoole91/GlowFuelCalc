@@ -10,7 +10,7 @@ const
   cMethanolDensity = 792;
   cCastorDensity = 962;
   cSynthDensity = 994;
-  cOrigFuelDensity = 848;
+  cOrigFuelDensity = 855;
   cNitroTarget = 12;
   cOrigFuelVolume = 1000;
   cOrigNitroPct = 12;
