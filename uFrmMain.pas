@@ -187,6 +187,10 @@ type
     lbOrigNitroContent2: TLabel;
     Label52: TLabel;
     Label53: TLabel;
+    lbMethTargetUnit: TLabel;
+    lbNitroTargetUnit: TLabel;
+    lbTotalOilTargetUnit: TLabel;
+    lbCastorRatioUnit: TLabel;
     procedure AddFormToVars(Sender: TObject);
     procedure FormToVars(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -489,6 +493,10 @@ begin
   end;
   {$ELSE}
   lbYieldUnit.Text := '(g)';
+  lbMethTargetUnit.Text := '(Wgt)';
+  lbNitroTargetUnit.Text := '(Wgt)';
+  lbTotalOilTargetUnit.Text := '(Wgt)';
+  lbCastorRatioUnit.Text := '(Wgt)';
   FormToVars(Sender);
   {$ENDIF}
 end;
@@ -496,6 +504,10 @@ end;
 procedure TfrmMain.rbTargetAsMlsChange(Sender: TObject);
 begin
   lbYieldUnit.Text := '(ml)';
+  lbMethTargetUnit.Text := '(Vol)';
+  lbNitroTargetUnit.Text := '(Vol)';
+  lbTotalOilTargetUnit.Text := '(Vol)';
+  lbCastorRatioUnit.Text := '(Vol)';
   FormToVars(Sender);
 end;
 
