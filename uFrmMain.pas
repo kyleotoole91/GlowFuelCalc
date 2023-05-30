@@ -240,7 +240,6 @@ const
   cOnlyProMessage = 'Please purchase the Pro version to use this feature';
 
 {$R *.fmx}
-{$R *.SmXhdpiPh.fmx ANDROID}
 
 {TfrmMain}
 
