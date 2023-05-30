@@ -240,6 +240,7 @@ const
   cOnlyProMessage = 'Please purchase the Pro version to use this feature';
 
 {$R *.fmx}
+{$R *.SmXhdpiPh.fmx ANDROID}
 
 {TfrmMain}
 
@@ -294,6 +295,19 @@ end;
 procedure TfrmMain.FormShow(Sender: TObject);
 begin
   LoadForm;
+end;
+
+procedure TfrmMain.LoadForm;
+begin
+  fLoading := true;
+  try
+    fFuelCalcMix.Calc;
+    VarsToForm;
+    fFuelCalcAdd.Calc;
+    VarsToAddForm;
+  finally
+    fLoading := false;
+  end;
 end;
 
 procedure TfrmMain.VarsToForm;
@@ -387,35 +401,7 @@ begin
   seNewNitroByWeight.Value := fFuelCalcAdd.NewNitroWeightPct;
   seAdditive1Pct.Value := fFuelCalcAdd.NewAdd1Pct;
   seAdditive2Pct.Value := fFuelCalcAdd.NewAdd2Pct;
-end;
-
-procedure TfrmMain.lbDefaultsClick(Sender: TObject);
-begin
-  fFuelCalcMix.ApplyDefaultValues;
-  fFuelCalcAdd.ApplyDefaultValues;
-  LoadForm;
-  ShowMessage('The default values have been restored');
-end;
-
-procedure TfrmMain.lbSaveClick(Sender: TObject);
-begin
-  {$IFNDEF PRO}
-  ShowMessage(cOnlyProMessage);
-  {$ELSE}
-  if fFuelCalcMix.Save and
-     fFuelCalcAdd.Save then
-    ShowMessage('The current settings will be loaded the next time the app launches')
-  else
-    ShowMessage('Error saving settings: ' + fFuelCalcMix.Persistence.ErrorMsg);
-  {$ENDIF}
-end;
-
-procedure TfrmMain.LoadForm;
-begin
-  fLoading := true;
-  try
-    fFuelCalcMix.Calc;
-    VarsToForm;
+  if fLoading then begin
     rbAddByWeight.IsChecked := fFuelCalcAdd.UnitType = utWeight;
     seOrigFuelDensity.Value := fFuelCalcAdd.OrigFuelDensity;
     seAddNitroDensity.Value := fFuelCalcAdd.NitroDensity;
@@ -438,11 +424,28 @@ begin
       seAdd1VolAmt.Value := fFuelCalcAdd.Additive1Amount / fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive1Density);
       seAdd2VolAmt.Value := fFuelCalcAdd.Additive2Amount / fFuelCalcAdd.GramsPerMl(fFuelCalcAdd.Additive2Density);
     end;
-    fFuelCalcAdd.Calc;
-    VarsToAddForm;
-  finally
-    fLoading := false;
   end;
+end;
+
+procedure TfrmMain.lbDefaultsClick(Sender: TObject);
+begin
+  fFuelCalcMix.ApplyDefaultValues;
+  fFuelCalcAdd.ApplyDefaultValues;
+  LoadForm;
+  ShowMessage('The default values have been restored');
+end;
+
+procedure TfrmMain.lbSaveClick(Sender: TObject);
+begin
+  {$IFNDEF PRO}
+  ShowMessage(cOnlyProMessage);
+  {$ELSE}
+  if fFuelCalcMix.Save and
+     fFuelCalcAdd.Save then
+    ShowMessage('The current settings will be loaded the next time the app launches')
+  else
+    ShowMessage('Error saving settings: ' + fFuelCalcMix.Persistence.ErrorMsg);
+  {$ENDIF}
 end;
 
 procedure TfrmMain.rbAddByVolumeChange(Sender: TObject);
